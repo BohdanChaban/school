@@ -18,6 +18,8 @@ AllCops:
     - 'tmp/**/*'
     - '.git/**/*'
     - 'config/initializers/devise.rb'
+    - 'spec/spec_helper.rb'
+    - 'spec/rails_helper.rb'
 
 
 Style/Documentation:
