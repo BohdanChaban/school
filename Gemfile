@@ -39,6 +39,9 @@ gem 'rubocop'
 # Use SimpleCov is a code coverage analysis tool for Ruby.
 gem 'simplecov'
 
+# Use RailsAdmin is a Rails engine that provides an easy-to-use interface for managing your data.
+gem 'rails_admin', '~> 1.3'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
