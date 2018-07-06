@@ -1,8 +1,24 @@
 Rails:
   Enabled: true
 
+
 AllCops:
   TargetRubyVersion: 2.4.1
+
+  Exclude:
+    - 'app/views/**/*'
+    - 'bin/*'
+    - 'db/schema.rb'
+    - 'db/migrate/*'
+    - 'log/**/*'
+    - 'node_modules/**/*'
+    - 'public/**/*'
+    - 'scripts/**/*'
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+    - '.git/**/*'
+    - 'config/initializers/devise.rb'
+
 
 Style/Documentation:
   Enabled: false
