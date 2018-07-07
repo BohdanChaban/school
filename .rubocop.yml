@@ -31,5 +31,11 @@ Style/MixinUsage:
 Metrics/LineLength:
   Max: 110
 
+# Increase block length for tests
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+
 Style/ClassAndModuleChildren:
   Enabled: false

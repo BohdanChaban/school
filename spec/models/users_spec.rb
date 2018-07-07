@@ -8,12 +8,11 @@ RSpec.describe User, type: :model do
       surname: 'Bar',
       email: 'foo@mail.com',
       password: '12345678',
-      password_confirmation: '12345678'
-    }
+      password_confirmation: '12345678' }
   end
   # Helpers definition
   let(:short_text)    { 'f' }
-  let(:long_text)     { 'f'*31 }
+  let(:long_text)     { 'f' * 31 }
   let(:invalid_email) { 'fff' }
 
   # Errors definition
