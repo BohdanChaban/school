@@ -65,3 +65,6 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # User auth gems devise
 gem 'devise'
 gem 'devise-bootstrap-views'
+
+# Tests rspec for rails
+gem 'rspec-rails'

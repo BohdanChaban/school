@@ -3,13 +3,13 @@ default: &default
   host: 'localhost'
   adapter: postgresql
   enconding: unicode
-  username: school_app
-  password: 12345678
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
 development:
   <<: *default
+  username: school_app
+  password: 12345678
   database: db/development
 
 # Warning: The database defined as "test" will be erased and
@@ -21,4 +21,6 @@ test:
 
 production:
   <<: *default
+  username: school_app
+  password: 12345678
   database: db/production
