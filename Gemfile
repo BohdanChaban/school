@@ -68,3 +68,6 @@ gem 'devise-bootstrap-views'
 
 # Tests rspec for rails
 gem 'rspec-rails'
+
+# Localization
+gem 'i18n'
