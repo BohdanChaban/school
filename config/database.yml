@@ -18,8 +18,8 @@ development:
 test:
   <<: *default
   # Uncomment for local test passing
-  username: school_app
-  password: 12345678
+  # username: school_app
+  # password: 12345678
   database: db/test
 
 production:
