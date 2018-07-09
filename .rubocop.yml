@@ -28,6 +28,9 @@ Style/Documentation:
 Style/MixinUsage:
   Enabled: false
 
+Style/SymbolArray:
+  Enabled: false
+
 Metrics/LineLength:
   Max: 110
 
