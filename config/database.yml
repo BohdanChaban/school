@@ -17,9 +17,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  # Uncomment for local test passing
-  # username: school_app
-  # password: 12345678
+  username: school_app
   database: db/test
 
 production:

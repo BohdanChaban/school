@@ -15,3 +15,7 @@
 
 en:
   hello: "Hello world"
+  articles: 'Articles'
+  topic: 'Topic'
+  summary: 'Summary'
+  show: 'Show'
