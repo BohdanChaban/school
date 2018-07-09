@@ -4,9 +4,9 @@ require 'yaml'
 
 data = YAML.load_file('lib/fixtures/subjects.yml')
 subjects = data['subjects']
-subjects.each_pair do |name, fields|
+subjects.each do |name|
   Subject.create!(
     name: name,
-    image: fields.fetch('image')
+    image: "subjects/#{name}.png"
   )
 end
