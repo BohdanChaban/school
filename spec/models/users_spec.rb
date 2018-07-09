@@ -11,7 +11,6 @@ RSpec.describe User, type: :model do
       password_confirmation: '12345678' }
   end
   # Helpers definition
-<<<<<<< HEAD
   let(:short_text)          { 'f' }
   let(:long_text)           { short_text * 31 }
   let(:invalid_email)       { short_text * 3 }
