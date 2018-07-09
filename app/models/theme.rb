@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Theme < ApplicationRecord
   LENGTH_RANGE = 5..40
 
