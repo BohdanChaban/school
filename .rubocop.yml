@@ -18,6 +18,8 @@ AllCops:
     - 'tmp/**/*'
     - '.git/**/*'
     - 'config/initializers/devise.rb'
+    - 'spec/spec_helper.rb'
+    - 'spec/rails_helper.rb'
 
 
 Style/Documentation:
@@ -28,6 +30,12 @@ Style/MixinUsage:
 
 Metrics/LineLength:
   Max: 110
+
+# Increase block length for tests
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
 
 Style/ClassAndModuleChildren:
   Enabled: false
