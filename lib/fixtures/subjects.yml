@@ -1,36 +1,23 @@
----
 subjects:
-  math:
-    image: math_img
-  ukrainian:
-    image: ukrainian_img
-  english:
-    image: english_img
-  german:
-    image: german_img
-  art:
-    image: art_img
-  musical_art:
-    image: musical_art_img
-  world_history:
-    image: world_history_img
-  ukrainian_history:
-    image: ukrainian_history_img
-  algebra:
-    image: algebra_img
-  geometry:
-    image: geometry_img
-  biology:
-    image: biology_img
-  chemistry:
-    image: chemistry_img
-  physics:
-    image: physics_img
-  geography:
-    image: geography_img
-  world_literature:
-    image: world_literature_img
-  ukrainian_literature:
-    image: ukrainian_literature_img
-  physical_culture:
-    image: physical_culture_img
+  - algebra
+  - art
+  - biology
+  - chemistry
+  - computer_science
+  - english
+  - french
+  - geography
+  - geometry
+  - german
+  - math
+  - musical_art
+  - physical_culture
+  - physics
+  - polish
+  - reading
+  - ukrainian
+  - ukrainian_history
+  - ukrainian_literature
+  - world_history
+  - world_literature
+  - writing
