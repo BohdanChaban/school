@@ -12,17 +12,6 @@ RSpec.describe User, type: :model do
   end
   # Helpers definition
 <<<<<<< HEAD
-  let(:short_text)    { 'f' }
-  let(:long_text)     { 'f' * 31 }
-  let(:invalid_email) { 'fff' }
-
-  # Errors definition
-  let(:short_error)   { 'is too short (minimum is 2 characters)' }
-  let(:long_error)    { 'is too long (maximum is 30 characters)' }
-  let(:short_error)   { 'is too short (minimum is 2 characters)' }
-  let(:invalid_error) { 'is invalid' }
-  let(:blank_error)   { 'can\'t be blank' }
-=======
   let(:short_text)          { 'f' }
   let(:long_text)           { short_text * 31 }
   let(:invalid_email)       { short_text * 3 }
@@ -43,8 +32,6 @@ RSpec.describe User, type: :model do
   let(:long_error_email)   { 'is too long (maximum is 40 characters)' }
   let(:invalid_error)      { 'is invalid' }
   let(:blank_error)        { 'can\'t be blank' }
->>>>>>> vasilchenko
-
   let(:confirmation_error) { 'doesn\'t match Password' }
 
   it 'is valid with valid attributes' do
@@ -52,8 +39,6 @@ RSpec.describe User, type: :model do
     expect(user).to be_valid
   end
 
-<<<<<<< HEAD
-=======
   it 'has the correct default role with empty attribute' do
     user = User.create(user_params)
     expect(user.role).to eq default_role
@@ -115,25 +100,17 @@ RSpec.describe User, type: :model do
     expect(user.approved) .to eq true
   end
 
->>>>>>> vasilchenko
   it 'is not valid with too short name' do
     user = User.create(user_params)
     user.name = short_text
     expect(user).not_to be_valid
-<<<<<<< HEAD
-    expect(user.errors.messages[:name]).to eq [short_error]
-=======
     expect(user.errors.messages[:name]).to eq [short_error_name]
->>>>>>> vasilchenko
   end
 
   it 'is not valid with too short surname' do
     user = User.create(user_params)
     user.surname = short_text
     expect(user).not_to be_valid
-<<<<<<< HEAD
-    expect(user.errors.messages[:surname]).to eq [short_error]
-=======
     expect(user.errors.messages[:surname]).to eq [short_error_name]
   end
 
@@ -142,37 +119,19 @@ RSpec.describe User, type: :model do
     user.email = short_text_email
     expect(user).not_to be_valid
     expect(user.errors.messages[:email]).to eq [short_error_email]
->>>>>>> vasilchenko
   end
 
   it 'is not valid with too long name' do
     user = User.create(user_params)
     user.name = long_text
     expect(user).not_to be_valid
-<<<<<<< HEAD
-    expect(user.errors.messages[:name]).to eq [long_error]
-=======
     expect(user.errors.messages[:name]).to eq [long_error_name]
->>>>>>> vasilchenko
   end
 
   it 'is not valid with too long surname' do
     user = User.create(user_params)
     user.surname = long_text
     expect(user).not_to be_valid
-<<<<<<< HEAD
-    expect(user.errors.messages[:surname]).to eq [long_error]
-  end
-
-  it 'is not valid with duplicated email' do
-  end
-
-  it 'is not valid with invalid email' do
-    user = User.create(user_params)
-    user.email = invalid_email
-    expect(user).not_to be_valid
-    expect(user.errors.messages[:email]).to eq [invalid_error]
-=======
     expect(user.errors.messages[:surname]).to eq [long_error_name]
   end
 
@@ -184,37 +143,24 @@ RSpec.describe User, type: :model do
   end
 
   it 'is not valid with duplicated email' do
->>>>>>> vasilchenko
   end
 
   it 'is not valid without a name' do
     user = User.create(user_params.except(:name))
     expect(user).not_to be_valid
-<<<<<<< HEAD
-    expect(user.errors.messages[:name]).to eq [short_error]
-=======
     expect(user.errors.messages[:name]).to eq [blank_error, short_error_name]
->>>>>>> vasilchenko
   end
 
   it 'is not valid without a surname' do
     user = User.create(user_params.except(:surname))
     expect(user).not_to be_valid
-<<<<<<< HEAD
-    expect(user.errors.messages[:surname]).to eq [short_error]
-=======
     expect(user.errors.messages[:surname]).to eq [blank_error, short_error_name]
->>>>>>> vasilchenko
   end
 
   it 'is not valid without a email' do
     user = User.create(user_params.except(:email))
     expect(user).not_to be_valid
-<<<<<<< HEAD
-    expect(user.errors.messages[:email]).to eq [blank_error]
-=======
     expect(user.errors.messages[:email][0]).to eq blank_error
->>>>>>> vasilchenko
   end
 
   it 'is not valid without a password' do
