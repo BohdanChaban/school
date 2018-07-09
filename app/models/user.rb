@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   NAME_LENGTH_RANGE = 2..30
   EMAIL_LENGTH_RANGE = 6..40
-  ROLES = %i[student curator teacher mentor].freeze
+  ROLES = %w[student curator teacher mentor].freeze
 
   validates :name, :surname, :email, presence: true
   validates :name, length: { in: NAME_LENGTH_RANGE }
