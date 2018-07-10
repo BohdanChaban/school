@@ -43,6 +43,14 @@ RailsAdmin.config do |config|
 
   # User model fields configuration
   config.model 'User' do
+    list do
+      field :name
+      field :surname
+      field :email
+      field :role
+      field :approved
+    end
+
     edit do
       field :name
       field :surname
