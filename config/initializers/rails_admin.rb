@@ -51,6 +51,15 @@ RailsAdmin.config do |config|
       field :approved
     end
 
+    show do
+      field :name
+      field :surname
+      field :email
+      field :role
+      field :approved
+      field :last_sign_in_at
+    end
+
     edit do
       field :name
       field :surname
