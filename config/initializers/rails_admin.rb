@@ -40,7 +40,6 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-
   # User model fields configuration
   config.model 'User' do
     list do
@@ -68,5 +67,4 @@ RailsAdmin.config do |config|
       field :approved
     end
   end
-
 end
