@@ -36,7 +36,9 @@ Metrics/LineLength:
 
 # Increase block length for tests
 Metrics/BlockLength:
-  Enabled: false
+  Exclude:
+    - 'spec/**/*'
+    - 'config/**/*'
 
 
 Style/ClassAndModuleChildren:
