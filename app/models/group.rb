@@ -3,6 +3,12 @@
 class Group < ApplicationRecord
   has_many :users, -> { User.student }, inverse_of: false
 
+  has_many :courses
+  has_many :subjects, through: :courses
+  has_many :users, -> { User.teacher }, inverse_of: false, through: :courses
+
+
+
   NUMBER_LENGTH_RANGE   = 1..2
   NUMBER_RANGE          = 1..12
 
