@@ -1,0 +1,19 @@
+<h1><%= @title %></h1>
+<table class="subject-table">
+  <tbody>
+    <% @subjects.in_groups_of(4).each do |group| %>
+      <tr class="row">
+        <% group.each do |subject| %>
+        <td class="subject-item col-md-3">
+          <% if subject %>
+          <%= image_tag subject.image %> <br>
+          <div class="subject-name">
+            <%= t(subject.name) %>
+          </div>
+          <% end %>
+        </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

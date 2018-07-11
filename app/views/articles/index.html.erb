@@ -1,20 +1,16 @@
-<h1> <%= t('articles') %> </h1>
-<table>
-  <thead>
-    <tr>
-      <th> <%= t('topic') %> </th>
-      <th> <%= t('summary') %> </th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.topic %></td>
-        <td><%= article.summary %></td>
-        <td><%= link_to  t('show'), article %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<h1 class="article-title"> <%= t('news') %> </h1>
+<div>
+  <% @articles.each do |article| %>
+    <div class="article-item">
+      <div class="article-topic">
+        <%= article.topic %>
+      </div>
+      <div class="article-summary">
+        <%= article.summary %>
+      </div>
+      <div class="article-link">
+        <%= link_to  t('details'), article, class: 'btn btn-info right' %>
+      </div>
+    </div>
+  <% end %>
+</div>
