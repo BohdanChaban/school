@@ -28,19 +28,26 @@
         <%= link_to 'School', root_path, class: 'header-link'%>
       </h1>
       <div class="btn-group btn-group-justified" id="nav_row" role="group">
-        <%= link_to 'Home', root_path, class: 'btn btn-danger' %>
-        <%= link_to 'Courses', '#', class: 'btn btn-danger' %>
-        <%= link_to 'Hometasks', '#', class: 'btn btn-danger' %>
-        <%= link_to 'Group', '#', class: 'btn btn-danger' %>
-        <%= link_to 'Subjects', '#', class: 'btn btn-danger' %>
-        <%= link_to 'Teachers', '#', class: 'btn btn-danger' %>
-        <%= link_to 'About us', '#', class: 'btn btn-danger' %>
+        <!--TODO: customize links list by user role -->
+        <%= link_to 'Home', root_path, class: 'btn btn-info' %>
+        <%= link_to 'Courses', '#', class: 'btn btn-info' %>
+        <%= link_to 'Hometasks', '#', class: 'btn btn-info' %>
+        <%= link_to 'Group', '#', class: 'btn btn-info' %>
+        <%= link_to 'Subjects', 'subjects_path', class: 'btn btn-info' %>
+        <%= link_to 'Teachers', '#', class: 'btn btn-info' %>
+        <%= link_to 'About us', '#', class: 'btn btn-info' %>
       </div>
     </header>
 
     <main class="main container">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if flash.present? %>
+        <% flash.each do |key, value| %>
+          <div class="<%= flash_class(key) %> alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <%= value %>
+          </div>
+        <% end %>
+      <% end %>
 
       <%= yield %>
     </main>
