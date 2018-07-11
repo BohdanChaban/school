@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 class Subject < ApplicationRecord
+  has_many :courses
+  has_many :groups, through: :courses
+  has_many :users, -> { User.teacher }, inverse_of: false, through: :courses
+
+
+
   validates :name, :image, presence: true
   validates :name, length: { in: 3..30 },
                    uniqueness: true,
