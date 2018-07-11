@@ -12,6 +12,7 @@ class Group < ApplicationRecord
   validates :number, :parallel, presence: true
   validates :number, length: { in: NUMBER_LENGTH_RANGE }
   validates :number, inclusion: { in: NUMBER_RANGE }
+  validates :number, uniqueness: { scope: :parallel }
   validates :parallel, length: { is: PARALLEL_LENGTH_RANGE }
   validates :parallel, inclusion: { in: PARALLELS }
 end
