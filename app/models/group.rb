@@ -7,8 +7,6 @@ class Group < ApplicationRecord
   has_many :subjects, through: :courses
   has_many :users, -> { User.teacher }, inverse_of: false, through: :courses
 
-
-
   NUMBER_LENGTH_RANGE   = 1..2
   NUMBER_RANGE          = 1..12
 
