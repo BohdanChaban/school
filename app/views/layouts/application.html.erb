@@ -13,13 +13,47 @@
   </head>
 
   <body>
-    <!-- Change locale buttons -->
-    <a href="?locale=ua">UA</a>
-    <a href="?locale=en">EN</a>
+    <header class="header">
+      <div class="locale-links">
+        <%= link_to image_tag('subjects/english.png', size: '50x50'), '?locale=en', class: 'right' %>
+        <%= link_to image_tag('subjects/ukrainian.png', size: '50x50'), '?locale=ua', class: 'right'  %>
 
-    <%= link_to("Sign Out", destroy_user_session_path, method: :delete) if user_signed_in? %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+        <% if user_signed_in? %>
+          <%= link_to image_tag('exit.png', size: '47x47'), destroy_user_session_path, method: :delete, class: 'right' %>
+        <% else %>
+          <%= link_to image_tag('plus.png', size: '47x47'), new_user_session_path, class: 'right' %>
+        <% end %>
+      </div>
+      <h1 class="header-title">
+        <%= link_to 'School', root_path, class: 'header-link'%>
+      </h1>
+      <div class="btn-group btn-group-justified" id="nav_row" role="group">
+        <!--TODO: customize links list by user role -->
+        <%= link_to 'Home', root_path, class: 'btn btn-info' %>
+        <%= link_to 'Courses', '#', class: 'btn btn-info' %>
+        <%= link_to 'Hometasks', '#', class: 'btn btn-info' %>
+        <%= link_to 'Group', '#', class: 'btn btn-info' %>
+        <%= link_to 'Subjects', subjects_path, class: 'btn btn-info' %>
+        <%= link_to 'Teachers', '#', class: 'btn btn-info' %>
+        <%= link_to 'About us', '#', class: 'btn btn-info' %>
+      </div>
+    </header>
+
+    <main class="main container">
+      <% if flash.present? %>
+        <% flash.each do |key, value| %>
+          <div class="<%= flash_class(key) %> alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <%= value %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <%= yield %>
+    </main>
+
+    <footer class="footer">
+      <span>All rights reserved &copy; 2018</span>
+    </footer>
   </body>
 </html>
