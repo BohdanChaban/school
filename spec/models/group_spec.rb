@@ -22,6 +22,8 @@ RSpec.describe Group, type: :model do
   let(:invalid_parallel)        { 'z' }
   let(:invalid_parallel_length) { 'b' * 2 }
   let(:some_role)               { 'mentor' }
+  let(:some_parallel)           { 'c' }
+  let(:some_number)             { 6 }
   let(:inclusion_parallels)     { %w[a b c] }
 
   # Errors definition
@@ -100,5 +102,28 @@ RSpec.describe Group, type: :model do
     group = Group.new(group_params)
     expect(group).not_to be_valid
     expect(group.errors.messages[:number]).to eq [blank_error, short_error_number, included_error]
+  end
+
+  it 'is not valid without uniqueness of pair number, parallel' do
+    group_params[:number] = some_number
+    group1 = Group.new(group_params)
+    group1.save
+    group2 = Group.new(group_params)
+    expect(group2).to_not be_valid
+  end
+
+  it 'is valid with uniqueness of pair number, parallel' do
+    group_params[:number] = some_number
+    group1 = Group.new(group_params)
+    group1.save
+    group_params[:parallel] = some_parallel
+    group2 = Group.new(group_params)
+    expect(group2).to be_valid
+  end
+
+  it 'is not save not uniqueness of pair number, parallel record to db' do
+    Group.new(group_params).save
+    group = Group.new(group_params).save
+    expect(group).to eq false
   end
 end
