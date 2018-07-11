@@ -1,8 +1,15 @@
 ua:
-  hello: "Привіт світ!"
-  articles: 'Новини'
+  school: 'Школа'
+  home: 'Домашня сторінка'
+  courses: 'Курси'
+  hometasks: 'Домашні завдання'
+  group: 'Клас'
+  teachers: 'Вчителі'
+  about_us: 'Про нас'
+  news: 'Новини'
   topic: 'Розділ'
   summary: 'Коротко'
+  details: 'Детальніше'
   show: 'Показати'
   subjects: 'Предмети'
   algebra: 'Алгебра'

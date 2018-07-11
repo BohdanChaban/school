@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 20180710130033) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "themes", force: :cascade do |t|
+    t.string "topic", default: "", null: false
+    t.text "description", default: "", null: false
+    t.text "links", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "surname", default: "", null: false

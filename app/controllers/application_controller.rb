@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def set_locale
-    I18n.locale = validated_locale
+    I18n.default_locale = validated_locale
   end
 
   def validated_locale
