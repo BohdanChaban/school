@@ -38,6 +38,7 @@ Metrics/LineLength:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
+    - 'config/**/*'
 
 
 Style/ClassAndModuleChildren:

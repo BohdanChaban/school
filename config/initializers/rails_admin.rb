@@ -39,4 +39,32 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  # User model fields configuration
+  config.model 'User' do
+    list do
+      field :name
+      field :surname
+      field :email
+      field :role
+      field :approved
+    end
+
+    show do
+      field :name
+      field :surname
+      field :email
+      field :role
+      field :approved
+      field :last_sign_in_at
+    end
+
+    edit do
+      field :name
+      field :surname
+      field :email
+      field :role
+      field :approved
+    end
+  end
 end
