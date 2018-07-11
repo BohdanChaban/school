@@ -1,8 +1,8 @@
 ua:
-  hello: "Привіт світ!"
-  articles: 'Новини'
+  news: 'Новини'
   topic: 'Розділ'
   summary: 'Коротко'
+  details: 'Детальніше'
   show: 'Показати'
   subjects: 'Предмети'
   algebra: 'Алгебра'

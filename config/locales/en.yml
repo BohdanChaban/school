@@ -14,10 +14,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
-  articles: 'Articles'
+  news: 'School news'
   topic: 'Topic'
   summary: 'Summary'
+  details: 'Read more'
   show: 'Show'
   subjects: 'Subjects'
   algebra: 'Algebra'

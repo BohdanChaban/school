@@ -1,3 +1,35 @@
 // Place all the styles related to the articles controller here.
 // They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.article-title{
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.article-item {
+  min-height: 100px;
+  background-color: rgba(4, 196, 244, 0.1);
+  padding: 20px 50px;
+  margin: 20px 15%;
+  border-radius: 25px;
+}
+
+.article-item:hover {
+  background-color: rgba(4, 196, 244, 0.4);
+}
+
+.article-topic {
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+.article-summary {
+  font-size: 16px;
+  text-align: justify;
+}
+
+.article-link {
+  height: 35px;
+}
