@@ -8,13 +8,8 @@ class GroupsController < ApplicationController
   end
 
   def show
-    redirect_to root_path unless id == current_user.group_id || !current_user.student?
-    @group = Group.find id
-  end
-
-  private
-
-  def id
-    @id = params[:id].to_i
+    group_id = params[:id].to_i
+    redirect_to root_path if current_user.student? && group_id != current_user.group_id
+    @group = Group.find group_id
   end
 end
