@@ -12,6 +12,4 @@ class GroupsController < ApplicationController
     redirect_to root_path if current_user.student? && group_id != current_user.group_id
     @group = Group.find group_id
   end
-
-  private
 end
