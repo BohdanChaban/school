@@ -2,7 +2,7 @@
 
 class Course < ApplicationRecord
   belongs_to :subject
-  belongs_to :group
+  belongs_to :group, optional: true
   belongs_to :user, -> { User.teacher }, inverse_of: false
 
   has_many :themes, dependent: :destroy
