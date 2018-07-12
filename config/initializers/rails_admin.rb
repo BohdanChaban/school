@@ -66,5 +66,15 @@ RailsAdmin.config do |config|
       field :role
       field :approved
     end
+
+    create do
+      field :name
+      field :surname
+      field :email
+      field :role
+      field :approved
+      field :password
+      field :password_confirmation
+    end
   end
 end
