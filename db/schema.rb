@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180711161508) do
+ActiveRecord::Schema.define(version: 20180712120402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 20180711161508) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["number", "parallel"], name: "index_groups_on_number_and_parallel", unique: true
+  end
+
+  create_table "hometasks", force: :cascade do |t|
+    t.string "description", null: false
+    t.string "link", default: "", null: false
+    t.bigint "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_hometasks_on_lesson_id"
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -79,5 +88,6 @@ ActiveRecord::Schema.define(version: 20180711161508) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "hometasks", "lessons"
   add_foreign_key "lessons", "themes"
 end
