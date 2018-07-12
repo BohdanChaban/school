@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :courses
+  has_many :courses, dependent: :nullify
   has_many :groups, through: :courses
   has_many :subjects, through: :courses
 

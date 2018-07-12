@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Subject < ApplicationRecord
-  has_many :courses
+  has_many :courses, dependent: :nullify
   has_many :groups, through: :courses
   has_many :users, -> { User.teacher }, inverse_of: false, through: :courses
 
