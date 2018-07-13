@@ -18,6 +18,12 @@ FactoryBot.define do
       factory :valid_user_for_teacher_role do
         role 'teacher'
       end
+
+      factory :valid_user_with_group do
+        after(:create) do |user|
+          create(:valid_group, user: user)
+        end
+      end
     end
 
     # Factories for invalid user
