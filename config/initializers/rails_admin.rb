@@ -78,7 +78,6 @@ RailsAdmin.config do |config|
     end
   end
 
-
   # Group model fields configuration
   config.model 'Group' do
     list do
