@@ -86,14 +86,54 @@ RailsAdmin.config do |config|
     end
 
     show do
-      field :name
-      field :surname
-      field :users
+      field :number
+      field :parallel
+      field :courses
     end
 
     edit do
       field :number
       field :parallel
+    end
+  end
+
+  # Subject model fields configuration
+  config.model 'Subject' do
+    list do
+      field :name
+      field :image
+    end
+
+    show do
+      field :name
+      field :image
+    end
+
+    edit do
+      field :name
+      field :image
+    end
+  end
+
+  # Theme model fields configuration
+  config.model 'Theme' do
+    list do
+      field :topic
+      field :course
+    end
+
+    show do
+      field :topic
+      field :course_id
+      field :description
+      field :links
+    end
+
+    edit do
+      field :topic
+      field :course
+      field :description
+      field :links
     end
   end
 end

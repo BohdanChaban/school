@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Theme < ApplicationRecord
-  belongs_to :course
+  belongs_to :course, optional: false
 
   LENGTH_RANGE = 5..40
 
