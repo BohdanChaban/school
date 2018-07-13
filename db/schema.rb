@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20180711165728) do
   create_table "courses", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "displayed", default: false, null: false
+    t.boolean "displayed", default: true, null: false
     t.bigint "group_id"
     t.bigint "subject_id"
     t.bigint "user_id"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20180711165728) do
   create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "surname", default: "", null: false
-    t.string "email", null: false
+    t.string "email", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "encrypted_password", default: "", null: false

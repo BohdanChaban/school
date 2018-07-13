@@ -19,6 +19,7 @@ test:
   <<: *default
   database: db/test
 
+
 production:
   <<: *default
   username: school_app
