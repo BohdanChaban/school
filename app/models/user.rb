@@ -18,4 +18,16 @@ class User < ApplicationRecord
   validates :role, inclusion: { in: ROLES }
 
   enum role: ROLES
+
+  def active_for_authentication?
+    super && approved?
+  end
+
+  def inactive_message
+    if approved?
+      super
+    else
+      :not_approved
+    end
+  end
 end
