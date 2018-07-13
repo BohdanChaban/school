@@ -121,19 +121,5 @@ RailsAdmin.config do |config|
       field :topic
       field :course
     end
-
-    show do
-      field :topic
-      field :course_id
-      field :description
-      field :links
-    end
-
-    edit do
-      field :topic
-      field :course
-      field :description
-      field :links
-    end
   end
 end
