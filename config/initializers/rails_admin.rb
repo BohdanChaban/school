@@ -77,4 +77,24 @@ RailsAdmin.config do |config|
       field :password_confirmation
     end
   end
+
+
+  # Group model fields configuration
+  config.model 'Group' do
+    list do
+      field :number
+      field :parallel
+    end
+
+    show do
+      field :name
+      field :surname
+      field :users
+    end
+
+    edit do
+      field :number
+      field :parallel
+    end
+  end
 end
