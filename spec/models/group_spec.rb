@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe Group, type: :model do
-
   let(:group) { FactoryBot.create(:valid_group) }
   let(:group_with_user) { FactoryBot.create(:valid_group_with_user) }
 
