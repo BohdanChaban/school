@@ -66,5 +66,60 @@ RailsAdmin.config do |config|
       field :role
       field :approved
     end
+
+    create do
+      field :name
+      field :surname
+      field :email
+      field :role
+      field :approved
+      field :password
+      field :password_confirmation
+    end
+  end
+
+  # Group model fields configuration
+  config.model 'Group' do
+    list do
+      field :number
+      field :parallel
+    end
+
+    show do
+      field :number
+      field :parallel
+      field :courses
+    end
+
+    edit do
+      field :number
+      field :parallel
+    end
+  end
+
+  # Subject model fields configuration
+  config.model 'Subject' do
+    list do
+      field :name
+      field :image
+    end
+
+    show do
+      field :name
+      field :image
+    end
+
+    edit do
+      field :name
+      field :image
+    end
+  end
+
+  # Theme model fields configuration
+  config.model 'Theme' do
+    list do
+      field :topic
+      field :course
+    end
   end
 end
