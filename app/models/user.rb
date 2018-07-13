@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :groups, through: :courses
   has_many :subjects, through: :courses
 
+  has_many :achievements, dependent: :destroy
+
   NAME_LENGTH_RANGE = 2..30
   EMAIL_LENGTH_RANGE = 6..40
   ROLES = %w[student curator teacher mentor].freeze
