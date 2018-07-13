@@ -2,8 +2,7 @@
 
 class GroupsController < ApplicationController
   def index
-    redirect_to root_path unless current_user
-    redirect_to group_path(current_user.group_id) if current_user&.student?
+    redirect_to group_path(current_user.group_id) if current_user.student?
     @groups = Group.all
   end
 
