@@ -1,0 +1,21 @@
+<% @title = t('groups') %>
+<h1> <%= t('groups') %> </h1>
+<table>
+  <thead>
+    <tr>
+      <th> <%= t('number') %> </th>
+      <th> <%= t('parallel') %> </th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+        <td><%= group.number %></td>
+        <td><%= group.parallel %></td>
+        <td><%= link_to  t('show'), group %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
