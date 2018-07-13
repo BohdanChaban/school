@@ -16,13 +16,13 @@ RSpec.describe Theme, type: :model do
       parallel: 'b' }
   end
   let(:user) { User.create!(user_params) }
-  let(:teacher) { User.create!(user_params.merge({email: 'fsd@mail.com',role: 'teacher'})) }
+  let(:teacher) { User.create!(user_params.merge(email: 'fsd@mail.com', role: 'teacher')) }
   let(:group) { Group.create!(group_params) }
   let(:course) do
     Course.create!(displayed: true,
-      group_id: group.id,
-      subject_id: subject.id,
-      user_id: teacher.id)
+                   group_id: group.id,
+                   subject_id: subject.id,
+                   user_id: teacher.id)
   end
   let(:theme_params) do
     { topic: 'Lorem',

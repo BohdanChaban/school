@@ -15,19 +15,19 @@ RSpec.describe Lesson, type: :model do
     { number:   5,
       parallel: 'b' }
   end
-  let(:teacher) { User.create!(user_params.merge({email: 'fsd@mail.com',role: 'teacher'})) }
+  let(:teacher) { User.create!(user_params.merge(email: 'fsd@mail.com', role: 'teacher')) }
   let(:group) { Group.create!(group_params) }
   let(:course) do
     Course.create!(displayed: true,
-      group_id: group.id,
-      subject_id: subject.id,
-      user_id: teacher.id)
+                   group_id: group.id,
+                   subject_id: subject.id,
+                   user_id: teacher.id)
   end
   let(:theme) do
     Theme.create!(topic: 'Lorem',
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit',
-      links: 'link0.com link1.ua',
-      course_id: course.id)
+                  description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit',
+                  links: 'link0.com link1.ua',
+                  course_id: course.id)
   end
 
   let(:lesson_params) do
