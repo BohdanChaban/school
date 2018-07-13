@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 class Group < ApplicationRecord
-  has_many :users, -> { User.student }, inverse_of: false
 
   has_many :courses, dependent: :nullify
   has_many :subjects, through: :courses
-  has_many :users, -> { User.teacher }, inverse_of: false, through: :courses
+  has_many :users, -> { User.student }, inverse_of: false
 
   NUMBER_LENGTH_RANGE   = 1..2
   NUMBER_RANGE          = 1..12
