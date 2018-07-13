@@ -50,7 +50,7 @@ RSpec.describe Group, type: :model do
   it 'is have users with valid attribute' do
     group = Group.create(group_params)
     user_params[:group_id] = group.id
-    user = User.create(user_params)
+    user = User.create!(user_params)
     expect(group.users).to eq [user]
   end
 

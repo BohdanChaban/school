@@ -3,26 +3,52 @@
 require 'rails_helper'
 
 RSpec.describe Hometask, type: :model do
-  # Model parameters definition
-  let(:lesson_params) do
-    { topic: 'Lesson_topic',
-      description: 'some description',
-      links: 'some links' }
+  let(:subject) { Subject.create!(name: 'math', image: '/sd') }
+  let(:user_params) do
+    { name: 'Foo',
+      surname: 'Bar',
+      email: 'foo@mail.com',
+      password: '12345678',
+      password_confirmation: '12345678' }
+  end
+  let(:group_params) do
+    { number:   5,
+      parallel: 'b' }
+  end
+  let(:teacher) { User.create!(user_params.merge({email: 'fsd@mail.com',role: 'teacher'})) }
+  let(:group) { Group.create!(group_params) }
+  let(:course) do
+    Course.create!(displayed: true,
+      group_id: group.id,
+      subject_id: subject.id,
+      user_id: teacher.id)
+  end
+  let(:theme) do
+    Theme.create!(topic: 'Lorem',
+      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit',
+      links: 'link0.com link1.ua',
+      course_id: course.id)
   end
 
-  let(:theme_params) do
-    { topic: 'Lorem',
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit',
-      links: 'link0.com link1.ua' }
+  let(:lesson_params) do
+    { topic: 'Test_topic',
+      description: 'some description',
+      links: 'some links',
+      theme_id: theme.id }
   end
+
+  # Lesson definition
+  let(:lesson) do
+    lesson_params[:theme_id] = theme.id
+    Lesson.create(lesson_params)
+  end
+
 
   let(:hometask_params) do
     { description: 'Hometask description',
       link: 'hometask link' }
   end
 
-  # Theme definition
-  let(:theme) { Theme.create(theme_params) }
 
   # Lesson definition
   let(:lesson) do
