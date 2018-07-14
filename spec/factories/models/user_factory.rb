@@ -16,6 +16,7 @@ FactoryBot.define do
       end
 
       factory :valid_user_for_teacher_role do
+        email 'teacher@example.com'
         role 'teacher'
       end
 
