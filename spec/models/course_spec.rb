@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe Course, type: :model do
-
   # Helpers definition
   let(:string) { 'str' }
   let(:int) { 123 }
