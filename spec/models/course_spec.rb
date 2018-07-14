@@ -8,23 +8,23 @@ RSpec.describe Course, type: :model do
   let(:int) { 123 }
 
   it 'is valid with all valid attributes' do
-    course = FactoryBot.create(:valid_course_with_displayed)
+    course = FactoryBot.build(:valid_course_with_displayed)
     expect(course).to be_valid
   end
   it 'is valid without displayed attribute' do
-    course = FactoryBot.create(:valid_course)
+    course = FactoryBot.build(:valid_course)
     expect(course).to be_valid
   end
   it 'is valid with displayed attribute type string' do
-    course = FactoryBot.create(:valid_course, displayed: string)
+    course = FactoryBot.build(:valid_course, displayed: string)
     expect(course).to be_valid
   end
   it 'is valid with displayed attribute type int' do
-    course = FactoryBot.create(:valid_course, displayed: int)
+    course = FactoryBot.build(:valid_course, displayed: int)
     expect(course).to be_valid
   end
   it 'is valid with displayed attribute false' do
-    course = FactoryBot.create(:valid_course, displayed: false)
+    course = FactoryBot.build(:valid_course, displayed: false)
     expect(course).to be_valid
   end
 

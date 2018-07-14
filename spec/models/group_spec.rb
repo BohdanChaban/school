@@ -3,9 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe Group, type: :model do
-  let(:group) { FactoryBot.create(:valid_group) }
-  let(:group_with_user) { FactoryBot.create(:valid_group_with_user) }
-
   # Helpers definition
   let(:invalid_number)          { 99 }
   let(:invalid_number_length)   { 105 }
@@ -25,12 +22,13 @@ RSpec.describe Group, type: :model do
   let(:included_error)        { 'is not included in the list' }
 
   it 'is valid with valid attributes' do
+    group = FactoryBot.build(:valid_group)
     expect(group).to be_valid
   end
 
   it 'is allow all inclusion value in the parallel' do
     inclusion_parallels.each do |parallel|
-      group = FactoryBot.create(:valid_group, parallel: parallel)
+      group = FactoryBot.build(:valid_group, parallel: parallel)
       expect(group).to be_valid
     end
   end
@@ -98,7 +96,7 @@ RSpec.describe Group, type: :model do
   end
 
   it 'is not save not uniqueness of pair number, parallel record to db' do
-    Group.create!(FactoryBot.attributes_for(:valid_group))
+    Group.create(FactoryBot.attributes_for(:valid_group))
     group = Group.new(FactoryBot.attributes_for(:valid_group)).save
     expect(group).to eq false
   end

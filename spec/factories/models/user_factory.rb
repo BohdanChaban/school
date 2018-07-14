@@ -15,6 +15,11 @@ FactoryBot.define do
         password_confirmation @pass
       end
 
+      factory :valid_user_for_mentor_role do
+        email 'mentor@example.com'
+        role 'mentor'
+      end
+
       factory :valid_user_for_teacher_role do
         email 'teacher@example.com'
         role 'teacher'

@@ -3,8 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe Subject, type: :model do
-  let(:subject) { FactoryBot.create(:valid_subject) }
-
   # Helpers definition
   let(:short_text)    { 'ff' }
   let(:long_text)     { 'f' * 31 }
@@ -20,6 +18,7 @@ RSpec.describe Subject, type: :model do
   let(:blank_error) { 'can\'t be blank' }
 
   it 'is valid with valid attributes' do
+    subject = FactoryBot.create(:valid_subject)
     expect(subject).to be_valid
   end
   describe 'name' do
@@ -67,7 +66,7 @@ RSpec.describe Subject, type: :model do
   end
 
   it 'is not valid without unique name' do
-    subject.save!
+    Subject.create(FactoryBot.attributes_for(:valid_subject))
     subject2 = Subject.create(FactoryBot.attributes_for(:valid_subject))
     expect(subject2).not_to be_valid
   end
