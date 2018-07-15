@@ -1,36 +1,445 @@
 ua:
-  school: 'Школа'
-  home: 'Домашня сторінка'
-  courses: 'Курси'
-  hometasks: 'Домашні завдання'
-  group: 'Клас'
-  teachers: 'Вчителі'
-  about_us: 'Про нас'
-  news: 'Новини'
+  title: 'Школа'
+  news: 'Новини школи'
   topic: 'Розділ'
   summary: 'Коротко'
   details: 'Детальніше'
   show: 'Показати'
-  subjects: 'Предмети'
-  algebra: 'Алгебра'
-  art: 'Художнє мистецтво'
-  biology: 'Біологія'
-  chemistry: 'Хімія'
-  computer_science: 'Інформатика'
-  english: 'Англійська мова'
-  french: 'Французька мова'
-  geography: 'Географія'
-  geometry: 'Геометрія'
-  german: 'Німецька мова'
-  math: 'Математика'
-  musical_art: 'Музичне мистецтво'
-  physical_culture: 'Фізична культура'
-  physics: 'Фізика'
-  polish: 'Польська мова'
-  reading: 'Читання'
-  ukrainian: 'Українська мова'
-  ukrainian_history: 'Історія України'
-  ukrainian_literature: 'Українська література'
-  world_history: 'Всесвітня історія'
-  world_literature: 'Світова література'
-  writing: 'Писання'
+  menu:
+    home: 'Домашня сторінка'
+    courses: 'Курси'
+    hometasks: 'Домашні завдання'
+    group: 'Клас'
+    teachers: 'Вчителі'
+    about_us: 'Про нас'
+    subjects: 'Предмети'
+  subjects:
+    algebra: 'Алгебра'
+    art: 'Художнє мистецтво'
+    biology: 'Біологія'
+    chemistry: 'Хімія'
+    computer_science: 'Інформатика'
+    english: 'Англійська мова'
+    french: 'Французька мова'
+    geography: 'Географія'
+    geometry: 'Геометрія'
+    german: 'Німецька мова'
+    math: 'Математика'
+    musical_art: 'Музичне мистецтво'
+    physical_culture: 'Фізична культура'
+    physics: 'Фізика'
+    polish: 'Польська мова'
+    reading: 'Читання'
+    ukrainian: 'Українська мова'
+    ukrainian_history: 'Історія України'
+    ukrainian_literature: 'Українська література'
+    world_history: 'Всесвітня історія'
+    world_literature: 'Світова література'
+    writing: 'Писання'
+  activerecord:
+    models:
+      achievement:
+        one:  Успішність
+        other: Успішності
+      article:
+        one:  Стаття
+        other: Статті
+      course:
+        one:  Курс
+        other: Курси
+      group:
+        one:  Група
+        other: Групи
+      hometask: Завдання
+      lesson:
+        one:  Урок
+        other: Уроки
+      subject:
+        one:  Предмет
+        other: Предмети
+      theme:
+        one:  Тема
+        other: Теми
+      user:
+        one:  Користувач
+        other: Користувачі
+    attributes:
+      achievement:
+        points: Оцінки
+        attendance: Відвідування
+        user: Студент
+        created_at: Створено
+        updated_at: Змінено
+      article:
+        topic: Назва
+        summary: Анотація
+        body: Текст
+        created_at: Створено
+        updated_at: Змінено
+      course:
+        displayed: Показати
+        group: Група
+        subject: Предмет
+        created_at: Створено
+        updated_at: Змінено
+      group:
+        number: Номер
+        parallel: Паралель
+      hometask:
+        description: Опис
+        link: Посилання
+        lesson: Урок
+        created_at: Створено
+        updated_at: Змінено
+      lesson:
+        topic: Назва
+        description: Опис
+        links: Посилання
+        date: Дата
+        created_at: Створено
+      subject:
+        name: Назва
+        image: Зображення
+      theme:
+        topic: Назва
+        course: Курс
+      user:
+        confirmation_sent_at: "Підтвердження вислано в"
+        confirmation_token: "Код підтвердження"
+        confirmed_at: "Підтверджено"
+        created_at: "Створено"
+        current_password: "Поточний пароль"
+        current_sign_in_at: "Поточна сесія відкрита"
+        current_sign_in_ip: IP поточної сесії
+        name: Ім'я
+        surname: Фамілія
+        email: Електронна пошта
+        role: Роль
+        approved: Підтвердженний
+        encrypted_password: "Зашифрований пароль"
+        failed_attempts: "Хибниз спроб"
+        last_sign_in_at: "Останній раз заходив"
+        last_sign_in_ip: IP останнього заходу
+        locked_at: "Заблокований"
+        password: "Пароль"
+        password_confirmation: "Підтвердження пароля"
+        remember_created_at: "Нагадування створене"
+        remember_me: "Запам'ятати мене"
+        reset_password_sent_at: "Лист скидання пародя відправлений"
+        reset_password_token: "Посилання на скидання пароля"
+        sign_in_count: "Кількість входів"
+        unconfirmed_email: "Не підтверджений email"
+        unlock_token: "Токен розблокування"
+        updated_at: "Змінений"
+        signed_up_but_not_approved: 'Ви успішно зареєструвалися, але ваш обліковий запис ще не схвалено адміністратором'
+  devise:
+    confirmations:
+      confirmed: "Ваш обліковий запис підтверджено. Ви увійшли в систему."
+      new:
+        resend_confirmation_instructions: "Повторно надіслати інструкцію з підтвердженням"
+      send_instructions: "Ви отримаєте лист з інструкціями щодо підтвердження вашого облікового запису протягом декількох хвилин."
+      send_paranoid_instructions: "Якщо Ваша електронна адреса існує в нашій базі даних, то протягом декількох хвилин Ви отримаєте лист з інструкціями щодо підтвердження Вашого облікового запису."
+    failure:
+      already_authenticated: "Ви вже увійшли в систему."
+      inactive: "Ваш обліковий запис ще не активовано."
+      invalid: "Некоректий %{authentication_keys} або пароль."
+      last_attempt: "У вас залишилась ще одна спроба перед блокуванням облікового запису."
+      locked: "Ваш обліковий запис заблоковано."
+      not_found_in_database: "Некоректий %{authentication_keys} або пароль."
+      timeout: "Час вашої сесії вичерпано. Будь ласка, увійдіть в систему знову."
+      unauthenticated: "Вам необхідно увійти в систему чи зареєструватися."
+      unconfirmed: "Вам потрібно підтвердити Ваш обліковий запис."
+      user:
+        not_approved: "Обліковий запис не схваленний адміністратором."
+    mailer:
+      confirmation_instructions:
+        action: "Підтвердити мій аккаунт"
+        greeting: "Ласкаво просимо, %{recipient}!"
+        instruction: "Ви можете підтвердити свою електронну пошту через посилання нижче:"
+        subject: "Інструкції щодо підтвердження облікового запису"
+      email_changed:
+        greeting: "Привіт %{recipient}!"
+        message: "Ми звертаємось до вас щоб повідомити про те що ваш email було змінено на %{email}."
+        subject: Email Змінено
+      password_change:
+        greeting: "Вітаємо, %{recipient}!"
+        message: "Ми намагаємося зв'язатися з Вами, щоб сповістити, що Ваш пароль було змінено."
+        subject: "Пароль змінено"
+      reset_password_instructions:
+        action: "Зміна паролю"
+        greeting: "Доброго дня, %{recipient}!"
+        instruction: "Хтось подав запит на зміну Вашого паролю, Ви можете підтвердити зміну через посилання нижче."
+        instruction_2: "Якщо Ви не робили запит на зміну паролю - проігноруйте це повідомлення."
+        instruction_3: "Ваш пароль не мінятиметься доки Ви не перейдете за посиланням вище і не створите новий."
+        subject: "Інструкції щодо відновлення пароля"
+      unlock_instructions:
+        action: "Розблокувати мій обліковий запис"
+        greeting: "Доброго дня, %{recipient}!"
+        instruction: "Натисніть на посилання нижче, щоб розблокувати обліковий запис:"
+        message: "Ваш обліковий запис був заблокований через велику кількості невдалих спроб входу."
+        subject: "Інструкції щодо розблоковування облікового запису"
+    omniauth_callbacks:
+      failure: Ви не можете увійти в систему обліковим записом %{kind}, тому що "%{reason}".
+      success: "Успішний вхід в систему з облікового запису %{kind}."
+    passwords:
+      edit:
+        change_my_password: "Змінити мій пароль"
+        change_your_password: "Змінити Ваш пароль"
+        confirm_new_password: "Підтвердіть новий пароль"
+        new_password: "Новий пароль"
+      new:
+        forgot_your_password: "Забули пароль?"
+        send_me_reset_password_instructions: "Відправити мені інструкції скидання паролів"
+      no_token: "Ця сторінка доступна тільки під час переходу з листа для скидання паролю. Якщо Ви все-таки перейшли через посилання з нього, будь ласка, переконайтесь, що використали повний URL."
+      send_instructions: "Протягом декількох хвилин Ви отримаєте лист з інструкціями щодо скидання Вашого пароля."
+      send_paranoid_instructions: "Якщо Ваша електронна адреса існує в нашій базі даних, то протягом декількох хвилин Ви отримаєте лист з інструкціями щодо відновлення пароля."
+      updated: "Ваш пароль змінено. Ви увійшли в систему."
+      updated_not_active: "Ваш пароль успішно змінено."
+    registrations:
+      destroyed: "Бувайте! Ваш обліковий запис був успішно видалений. Сподіваємось незабаром побачитись з Вами знову."
+      edit:
+        are_you_sure: "Ви впевнені?"
+        cancel_my_account: "Скасувати мій обліковий запис"
+        currently_waiting_confirmation_for_email: "В даний час очікуємо підтвердження від: %{email}"
+        leave_blank_if_you_don_t_want_to_change_it: "залиште порожнім, якщо ви не хочете змінити його"
+        title: "Редагувати %{resource}"
+        unhappy: "Незадоволені"
+        update: "Оновити"
+        we_need_your_current_password_to_confirm_your_changes: "введіть свій поточний пароль для підтвердження змін"
+      new:
+        sign_up: "Зареєструватись"
+      signed_up: "Ласкаво просимо! Ви успішно зареєструвалися."
+      signed_up_but_inactive: "Ви успішно зареєструвалися, але не можете увійти в систему тому що обліковий запис ще не активовано."
+      signed_up_but_locked: "Ви успішно зареєструвалися, але не можете увійти в систему тому що обліковий запис заблоковано."
+      signed_up_but_unconfirmed: "Ви отримаєте лист з інструкціями щодо підтвердження облікового запису протягом декількох хвилин."
+      update_needs_confirmation: Ваш обліковий запис оновлено, але необхідно підтвердити нову електронну адресу. Будь ласка, перевірте свою електронну скриньку і перейдіть за посиланням "Підтвердити", шоб завершити оновлення електронної адреси.
+      updated: "Ваш обліковий запис змінено."
+    sessions:
+      already_signed_out: "Успішний вихід з системи."
+      new:
+        sign_in: "Увійти"
+      signed_in: "Ви увійшли в систему."
+      signed_out: "Успішний вихід з системи."
+    shared:
+      links:
+        back: "Назад"
+        didn_t_receive_confirmation_instructions: "Не отримали лист з підтвердженням?"
+        didn_t_receive_unlock_instructions: "Не отримали інструкції розблокування?"
+        forgot_your_password: "Забули пароль?"
+        sign_in: "Увійти"
+        sign_in_with_provider: "Увійти за допомогою %{provider}"
+        sign_up: "Зареєструватись"
+      minimum_password_length:
+        few: ''
+        many: ''
+        one: "(мінімум %{count} символ)"
+        other: "(мінімум %{count} символи/ів)"
+    unlocks:
+      new:
+        resend_unlock_instructions: "Повторно надіслати інструкції з розблокування"
+      send_instructions: "Протягом декількох хвилин Ви отримаєте лист з інструкціями щодо розблокування облікового запису."
+      send_paranoid_instructions: "Якщо обліковий запис існує, то протягом декількох хвилин Ви отримаєте лист з інструкціями щодо його розблокування."
+      unlocked: "Обліковий запис розблоковано. Ви увійшли в систему."
+  errors:
+    messages:
+      already_confirmed: "вже підтверджено. Будь ласка, спробуйте увійти в систему"
+      confirmation_period_expired: "має бути підтверджено протягом %{period}, будь ласка, попросіть підтвердження запису ще раз"
+      expired: "застаріла. Будь ласка, спробуйте знову"
+      not_found: "не знайдено"
+      not_locked: "не заблоковано"
+      not_saved:
+        few: "%{resource}: не вдалося зберегти через %{count} помилки"
+        many: "%{resource}: не вдалося зберегти через %{count} помилок"
+        one: "%{resource}: не вдалося зберегти через %{count} помилку"
+      other: "%{resource}: не вдалося зберегти через %{count} помилок"
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: біля 1 години
+        other: біля %{count} годин
+      about_x_months:
+        one: біля 1 мисяця
+      other: біля %{count} місяців
+      about_x_years:
+        one: біля 1 року
+        other: біля %{count} років
+      almost_x_years:
+        one: менше 1 року
+        other: менше %{count} років
+      half_a_minute: пів хвилини
+      less_than_x_minutes:
+        one: менше ніж хвилину
+        other: менше ніж %{count} хвилин
+      less_than_x_seconds:
+        one: менше ніж 1 секунда
+        other: менше ніж %{count} секунд
+      over_x_years:
+        one: більше 1 рік
+        other: більше %{count} років
+      x_days:
+        one: 1 день
+        other: "%{count} дня"
+      x_minutes:
+        one: 1 хвилина
+        other: "%{count} хвилини"
+      x_months:
+        one: 1 місяц
+        other: "%{count} місяців"
+      x_years:
+        one: 1 рік
+        other: "%{count} років"
+      x_seconds:
+        one: 1 секунда
+      other: "%{count} секунд"
+  # rails_admin locale  
+  admin:
+    js:
+      true: 'True'
+      false: 'False'
+      is_present: "Є присутнім"
+      is_blank: "Є порожнім"
+      date: "Дата ..."
+      between_and_: "Між ... і ..."
+      today: "Сьогодні"
+      yesterday: "Вчора"
+      this_week: "Цей тиждень"
+      last_week: "Минулий тиждень"
+      number: "Число ..."
+      contains: "Містить"
+      is_exactly: "Є в точності"
+      starts_with: "Починається з"
+      ends_with: "Закінчується на"
+      too_many_objects: "Занадто багато елементів, використовуйте пошук"
+      no_objects: "Нічого не знайдено"
+    loading: "Завантаження..."
+    toggle_navigation: "Увімкнути навігацію"
+    home:
+      name: "Домашня"
+    pagination:
+      previous: "&laquo; Назад"
+      next: "Вперед &raquo;"
+      truncate: "…"
+    misc:
+      filter_date_format: "dd.mm.yy" # a combination of 'dd', 'mm' and 'yy' with any delimiter. No other interpolation will be done!
+      search: "Пошук"
+      filter: "Фільтр"
+      refresh: "Оновити"
+      show_all: "Показати всі"
+      add_filter: "Додати фільтр"
+      bulk_menu_title: "Вибрані елементи"
+      remove: "Видалити"
+      add_new: "Створити"
+      chosen: "Обраний %{name}"
+      chose_all: "Вибрати всі"
+      clear_all: "Видалити всі"
+      up: "Вверх"
+      down: "Вниз"
+      navigation: "Навігація"
+      navigation_static_label: "Посилання"
+      log_out: "Розлогінитись"
+      ago: "тому"
+    flash:
+      successful: "%{name} успішно %{action}"
+      error: "%{name} не %{action} через помилки"
+      noaction: "Нічого не відбулось"
+      model_not_found: "Модель '%{model}' не знайдено"
+      object_not_found: "%{model} з id '%{id}' не знайдено"
+    table_headers:
+      model_name: "Назва моделі"
+      last_created: "Востаннє створено"
+      last_used: "Останній раз використовувався"
+      records: "Записи"
+      username: "Користувач"
+      changes: "Зміни"
+      created_at: "Дата/Час"
+      item: "Елемент"
+      message: "Повідомлення"
+    actions:
+      dashboard:
+        title: "Адміністрування сайту"
+        menu: "Дашборд"
+        breadcrumb: "Дашборд"
+      index:
+        title: "Список %{model_label_plural}"
+        menu: "Список"
+        breadcrumb: "%{model_label_plural}"
+      show:
+        title: "Детально про %{model_label} «%{object_label}»"
+        menu: "Показати"
+        breadcrumb: "%{object_label}"
+      show_in_app:
+        menu: "Показати у додатку"
+      new:
+        title: "Новий %{model_label}"
+        menu: "Створити"
+        breadcrumb: "Створення"
+        link: "Створити %{model_label}"
+        done: "створено"
+      edit:
+        title: "Редагування %{model_label} «%{object_label}»"
+        menu: "Редагувати"
+        breadcrumb: "Редагування"
+        link: "Редагувати %{model_label}"
+        done: "оновлено"
+      delete:
+        title: "Видалення %{model_label} «%{object_label}»"
+        menu: "Видалити"
+        breadcrumb: "Видалення"
+        link: "Видалити %{object_label}"
+        done: "видалено"
+      bulk_delete:
+        title: "Видалити %{model_label_plural}"
+        menu: "Масове видалення"
+        breadcrumb: "Масове видалення"
+        bulk_link: "Видалити обрані %{model_label_plural}"
+      export:
+        title: "Експорт %{model_label_plural}"
+        menu: "Експорт"
+        breadcrumb: "Експорт"
+        link: "Експортувати знайдені «%{model_label_plural}»"
+        bulk_link: "Експортувати обрані «%{model_label_plural}»"
+        done: "експортовано"
+      history_index:
+        title: "Історія для «%{model_label_plural}»"
+        menu: "Історія"
+        breadcrumb: "Історія"
+      history_show:
+        title: "Історія для %{model_label} «%{object_label}»"
+        menu: "Історія"
+        breadcrumb: "Історія"
+    form:
+      cancel: "Відмінити"
+      basic_info: "Осоновна інформація"
+      required: "Обов’язкове"
+      optional: "Опціональне"
+      one_char: "символ"
+      char_length_up_to: "довжиною до"
+      char_length_of: "довжина"
+      save: "Зберегти"
+      save_and_add_another: "Зберегти і додати новий елемент"
+      save_and_edit: "Зберегти і редагувати"
+      all_of_the_following_related_items_will_be_deleted: "? Всі зв’язані елементи буде видалено або відв’язано:"
+      are_you_sure_you_want_to_delete_the_object: "Чи ви справді хочете видалити %{model_name}"
+      confirmation: "Так, я впевнений"
+      bulk_delete: "Наступні об’єкти буде видалено, що призведе до видалення наступних пов’язаних елементів (або лише зв’язку з ними):"
+      new_model: "%{name} (new)"
+    export:
+      confirmation: "Експортувати в %{name}"
+      select: "Веберіть поля для експорту"
+      fields_from: "Поля з %{name}"
+      fields_from_associated: "Поля з пов'язаного %{name}"
+      display: "Показати %{name}: %{type}"
+      options_for: "Опції для %{name}"
+      empty_value_for_associated_objects: "<пусто>"
+      click_to_reverse_selection: "Клік для відміни вибору"
+      csv:
+        header_for_root_methods: "%{name}" # 'model' is available
+        header_for_association_methods: "%{name} [%{association}]"
+        encoding_to: "Кодувати"
+        encoding_to_help: "Виберіть кодування виводу. Залиште поле порожнім, щоб поточне кодування не змінилось: (%{name})"
+        skip_header: "Без заголовка"
+        skip_header_help: "Не виводити заголовок (без опису полів)"
+        default_col_sep: ","
+        col_sep: "Роздільник стовпців"
+        col_sep_help: "Залишити пустим по замовчуванню ('%{value}')" # value is default_col_sep
+# end rails_admin locale      
