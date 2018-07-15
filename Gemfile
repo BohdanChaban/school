@@ -41,6 +41,7 @@ gem 'simplecov'
 
 # Use RailsAdmin is a Rails engine that provides an easy-to-use interface for managing your data.
 gem 'rails_admin', '~> 1.3'
+gem 'rails_admin-i18n'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -67,6 +68,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # User auth gems devise
 gem 'devise'
 gem 'devise-bootstrap-views'
+gem 'devise-i18n'
 
 # Tests rspec for rails
 gem 'rails-controller-testing'

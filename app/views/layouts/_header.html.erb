@@ -10,16 +10,16 @@
     <% end %>
   </div>
   <h1 class="header-title">
-    <%= link_to t(:school), root_path, class: 'header-link'%>
+    <%= link_to t(:title), root_path, class: 'header-link'%>
   </h1>
   <div class="btn-group btn-group-justified" id="nav_row" role="group">
     <!--TODO: customize links list by user role -->
-    <%= link_to t(:home), root_path, class: 'btn btn-info' %>
-    <%= link_to t(:courses), '#', class: 'btn btn-info' %>
-    <%= link_to t(:hometasks), '#', class: 'btn btn-info' %>
-    <%= link_to t(:group), groups_path, class: 'btn btn-info' %>
-    <%= link_to t(:subjects), subjects_path, class: 'btn btn-info' %>
-    <%= link_to t(:teachers), '#', class: 'btn btn-info' %>
-    <%= link_to t(:about_us), '#', class: 'btn btn-info' %>
+    <%= link_to t('menu.home'), root_path, class: 'btn btn-info' %>
+    <%= link_to t('menu.courses'), '#', class: 'btn btn-info' %>
+    <%= link_to t('menu.hometasks'), '#', class: 'btn btn-info' %>
+    <%= link_to t('menu.group'), groups_path, class: 'btn btn-info' %>
+    <%= link_to t('menu.subjects'), subjects_path, class: 'btn btn-info' %>
+    <%= link_to t('menu.teachers'), '#', class: 'btn btn-info' %>
+    <%= link_to t('menu.about_us'), '#', class: 'btn btn-info' %>
   </div>
 </header>

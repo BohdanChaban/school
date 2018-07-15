@@ -3,19 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe Group, type: :model do
-  let(:group_params) do
-    { number:   5,
-      parallel: 'b' }
-  end
-
-  let(:user_params) do
-    { name: 'Foo',
-      surname: 'Bar',
-      email: 'foo@mail.com',
-      password: '12345678',
-      password_confirmation: '12345678' }
-  end
-
   # Helpers definition
   let(:invalid_number)          { 99 }
   let(:invalid_number_length)   { 105 }
@@ -35,95 +22,82 @@ RSpec.describe Group, type: :model do
   let(:included_error)        { 'is not included in the list' }
 
   it 'is valid with valid attributes' do
-    group = Group.create(group_params)
+    group = FactoryBot.build(:valid_group)
     expect(group).to be_valid
   end
 
   it 'is allow all inclusion value in the parallel' do
     inclusion_parallels.each do |parallel|
-      group_params[:parallel] = parallel
-      group = Group.create(group_params)
+      group = FactoryBot.build(:valid_group, parallel: parallel)
       expect(group).to be_valid
     end
   end
 
   it 'is have users with valid attribute' do
-    group = Group.create(group_params)
-    user_params[:group_id] = group.id
-    user = User.create!(user_params)
-    expect(group.users).to eq [user]
+    group = FactoryBot.create(:valid_group_with_user)
+    expect(group.users.length).to eq 1
   end
 
   it 'is have not users with invalid attribute' do
-    group = Group.create(group_params)
-    user_params[:group_id] = group.id
-    user_params[:role] = some_role
-    User.create(user_params)
+    group = FactoryBot.create(:valid_group_with_invalid_user_role)
     expect(group.users.length).to eq 0
   end
 
   it 'is not valid with invalid number' do
-    group_params[:number] = invalid_number
-    group = Group.new(group_params)
+    group = FactoryBot.build(:valid_group, number: invalid_number)
     expect(group).not_to be_valid
     expect(group.errors.messages[:number]).to eq [included_error]
   end
 
   it 'is not valid with invalid parallel' do
-    group_params[:parallel] = invalid_parallel
-    group = Group.new(group_params)
+    group = FactoryBot.build(:valid_group, parallel: invalid_parallel)
     expect(group).not_to be_valid
     expect(group.errors.messages[:parallel]).to eq [included_error]
   end
 
   it 'is not valid with too long number' do
-    group_params[:number] = invalid_number_length
-    group = Group.new(group_params)
+    group = FactoryBot.build(:valid_group, number: invalid_number_length)
     expect(group).not_to be_valid
     expect(group.errors.messages[:number]).to eq [long_error_number, included_error]
   end
 
   it 'is not valid with too long parallel' do
-    group_params[:parallel] = invalid_parallel_length
-    group = Group.new(group_params)
+    group = FactoryBot.build(:valid_group, parallel: invalid_parallel_length)
     expect(group).not_to be_valid
     expect(group.errors.messages[:parallel]).to eq [length_error_parallel, included_error]
   end
 
   it 'is not valid without a parallel' do
-    group_params[:parallel] = nil
-    group = Group.new(group_params)
+    group = FactoryBot.build(:valid_group, parallel: nil)
     expect(group).not_to be_valid
     expect(group.errors.messages[:parallel]).to eq [blank_error, length_error_parallel, included_error]
   end
 
   it 'is not valid without a number' do
-    group_params[:number] = nil
-    group = Group.new(group_params)
+    group = FactoryBot.build(:valid_group, number: nil)
     expect(group).not_to be_valid
     expect(group.errors.messages[:number]).to eq [blank_error, short_error_number, included_error]
   end
 
   it 'is not valid without uniqueness of pair number, parallel' do
-    group_params[:number] = some_number
-    group1 = Group.new(group_params)
-    group1.save
-    group2 = Group.new(group_params)
+    group = FactoryBot.create(:valid_group, number: some_number)
+    group2 = FactoryBot.build(:valid_group, number: some_number)
+
+    expect(group).to be_valid
     expect(group2).to_not be_valid
   end
 
   it 'is valid with uniqueness of pair number, parallel' do
-    group_params[:number] = some_number
-    group1 = Group.new(group_params)
-    group1.save
-    group_params[:parallel] = some_parallel
-    group2 = Group.new(group_params)
+    group = FactoryBot.create(:valid_group, number: some_number)
+    group2 = FactoryBot.create(:valid_group, number: some_number, parallel: some_parallel)
+
+    expect(group).to be_valid
     expect(group2).to be_valid
   end
 
   it 'is not save not uniqueness of pair number, parallel record to db' do
-    Group.new(group_params).save
-    group = Group.new(group_params).save
+    Group.create(FactoryBot.attributes_for(:valid_group))
+    group = Group.new(FactoryBot.attributes_for(:valid_group)).save
     expect(group).to eq false
   end
 end

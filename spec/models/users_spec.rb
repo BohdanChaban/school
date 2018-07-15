@@ -3,8 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { FactoryBot.create(:valid_user_for_registration) }
-
   # Helpers definition
   let(:short_text)          { 'f' }
   let(:long_text)           { short_text * 31 }
@@ -29,14 +27,17 @@ RSpec.describe User, type: :model do
   let(:confirmation_error) { 'doesn\'t match Password' }
 
   it 'is valid with valid attributes' do
+    user = FactoryBot.create(:valid_user_for_registration)
     expect(user).to be_valid
   end
 
   it 'has the correct default role with empty attribute' do
+    user = FactoryBot.create(:valid_user_for_registration)
     expect(user.role).to eq default_role
   end
 
   it 'has the correct default approved with empty attribute' do
+    user = FactoryBot.create(:valid_user_for_registration)
     expect(user.approved).to eq default_approved
   end
 
@@ -51,10 +52,12 @@ RSpec.describe User, type: :model do
   end
 
   it 'is valid with valid attributes' do
+    user = FactoryBot.create(:valid_user_for_registration)
     expect(user.role).to eq default_role
   end
 
   it 'is allow inclusion value in the role' do
+    user = FactoryBot.create(:valid_user_for_registration)
     inclusion_role.each do |role|
       user.role = role
       expect(user).to be_valid
@@ -62,6 +65,7 @@ RSpec.describe User, type: :model do
   end
 
   it 'is allow inclusion value in the approved' do
+    user = FactoryBot.create(:valid_user_for_registration)
     [true, false].each do |value|
       user.approved = value
       expect(user).to be_valid
@@ -69,51 +73,60 @@ RSpec.describe User, type: :model do
   end
 
   it 'is not valid with invalid email' do
+    user = FactoryBot.create(:valid_user_for_registration)
     user.email = invalid_email
     expect(user).not_to be_valid
     expect(user.errors.messages[:email]).to eq [invalid_error, short_error_email]
   end
 
   it 'is not allow not inclusion value in the role' do
+    user = FactoryBot.create(:valid_user_for_registration)
     expect { user.role = not_inclusion_role }.to raise_error(ArgumentError)
   end
 
   it 'is not allow not inclusion value in the approved' do
+    user = FactoryBot.create(:valid_user_for_registration)
     user.approved = random_value
     expect(user.approved) .to eq true
   end
 
   it 'is not valid with too short name' do
+    user = FactoryBot.create(:valid_user_for_registration)
     user.name = short_text
     expect(user).not_to be_valid
     expect(user.errors.messages[:name]).to eq [short_error_name]
   end
 
   it 'is not valid with too short surname' do
+    user = FactoryBot.create(:valid_user_for_registration)
     user.surname = short_text
     expect(user).not_to be_valid
     expect(user.errors.messages[:surname]).to eq [short_error_name]
   end
 
   it 'is not valid with too short email' do
+    user = FactoryBot.create(:valid_user_for_registration)
     user.email = short_text_email
     expect(user).not_to be_valid
     expect(user.errors.messages[:email]).to eq [short_error_email]
   end
 
   it 'is not valid with too long name' do
+    user = FactoryBot.create(:valid_user_for_registration)
     user.name = long_text
     expect(user).not_to be_valid
     expect(user.errors.messages[:name]).to eq [long_error_name]
   end
 
   it 'is not valid with too long surname' do
+    user = FactoryBot.create(:valid_user_for_registration)
     user.surname = long_text
     expect(user).not_to be_valid
     expect(user.errors.messages[:surname]).to eq [long_error_name]
   end
 
   it 'is not valid with too long email' do
+    user = FactoryBot.create(:valid_user_for_registration)
     user.email = long_text_email
     expect(user).not_to be_valid
     expect(user.errors.messages[:email]).to eq [long_error_email]
