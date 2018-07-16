@@ -41,6 +41,7 @@ ua:
       achievement:
         one:  Успішність
         other: Успішності
+      admin: Адміністратор
       article:
         one:  Стаття
         other: Статті
@@ -70,6 +71,27 @@ ua:
         user: Студент
         created_at: Створено
         updated_at: Змінено
+      admin:
+        confirmed_at: "Підтверджено"
+        created_at: "Створено"
+        current_password: "Поточний пароль"
+        current_sign_in_at: "Поточна сесія відкрита"
+        current_sign_in_ip: IP поточної сесії
+        email: Електронна пошта
+        encrypted_password: "Зашифрований пароль"
+        failed_attempts: "Хибних спроб"
+        last_sign_in_at: "Останній раз заходив"
+        last_sign_in_ip: IP останнього заходу
+        locked_at: "Заблокований"
+        password: "Пароль"
+        password_confirmation: "Підтвердження пароля"
+        remember_created_at: "Нагадування створене"
+        reset_password_sent_at: "Лист скидання пародя відправлений"
+        reset_password_token: "Посилання на скидання пароля"
+        sign_in_count: "Кількість входів"
+        unconfirmed_email: "Не підтверджений email"
+        unlock_token: "Токен розблокування"
+        updated_at: "Змінений"
       article:
         topic: Назва
         summary: Анотація
@@ -117,7 +139,7 @@ ua:
         role: Роль
         approved: Підтвердженний
         encrypted_password: "Зашифрований пароль"
-        failed_attempts: "Хибниз спроб"
+        failed_attempts: "Хибних спроб"
         last_sign_in_at: "Останній раз заходив"
         last_sign_in_ip: IP останнього заходу
         locked_at: "Заблокований"
