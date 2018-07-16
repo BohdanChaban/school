@@ -54,9 +54,9 @@ ActiveRecord::Schema.define(version: 20180715194933) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "displayed", default: true, null: false
-    t.bigint "group_id"
-    t.bigint "subject_id"
-    t.bigint "user_id"
+    t.bigint "group_id", null: false
+    t.bigint "subject_id", null: false
+    t.bigint "user_id", null: false
   end
 
   create_table "groups", force: :cascade do |t|
