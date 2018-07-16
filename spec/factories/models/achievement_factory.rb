@@ -5,6 +5,7 @@ FactoryBot.define do
     factory :valid_achievement do
       points 10
       attendance true
+      kind 'normal'
 
       association :user, factory: :valid_user_for_registration, email: 'random_email@y.ru'
       association :lesson, factory: :valid_lesson_with_all_optional

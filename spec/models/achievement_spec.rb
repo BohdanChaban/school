@@ -14,10 +14,24 @@ RSpec.describe Achievement, type: :model do
   let(:exist_error) { 'must exist' }
   let(:empty) { '' }
   let(:included_error) { 'is not included in the list' }
+  let(:inclusion_kind) { %w[normal notebook thematic semester year] }
 
   it 'is valid with valid attributes' do
     achievement = FactoryBot.build(:valid_achievement)
     expect(achievement).to be_valid
+  end
+
+  it 'is valid without kind attribute' do
+    achievement = FactoryBot.build(:valid_achievement, kind: nil)
+    expect(achievement).to be_valid
+  end
+
+  it 'is allow inclusion value in the kind' do
+    achievement = FactoryBot.build(:valid_achievement)
+    inclusion_kind.each do |kind|
+      achievement.kind = kind
+      expect(achievement).to be_valid
+    end
   end
 
   it 'is not valid without points' do
