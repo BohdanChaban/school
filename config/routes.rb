@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   resources :articles, only: %i[index show]
   resources :groups, only: %i[index show]
   resources :subjects, only: %i[index]
+  resources :courses, only: %i[show]
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 end
