@@ -95,12 +95,12 @@ en:
         displayed: Displayed
         group: Group
         subject: Subject
+        user: Teacher
         created_at: Created at
         updated_at: Updated at
       group:
         number: Number
         parallel: Parallel
-        user: Teacher
       hometask:
         description: Description
         link: Link
