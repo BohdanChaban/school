@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20180715194933) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -103,6 +104,16 @@ ActiveRecord::Schema.define(version: 20180715194933) do
     t.bigint "course_id"
   end
 
+  create_table "timeslots", force: :cascade do |t|
+    t.integer "day", default: 0, null: false
+    t.integer "number", default: 1, null: false
+    t.bigint "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_timeslots_on_course_id"
+    t.index ["day", "number", "course_id"], name: "index_timeslots_on_day_and_number_and_course_id", unique: true
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "surname", default: "", null: false
@@ -129,4 +140,5 @@ ActiveRecord::Schema.define(version: 20180715194933) do
   add_foreign_key "achievements", "users"
   add_foreign_key "hometasks", "lessons"
   add_foreign_key "lessons", "themes"
+  add_foreign_key "timeslots", "courses"
 end

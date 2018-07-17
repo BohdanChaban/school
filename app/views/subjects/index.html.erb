@@ -1,3 +1,4 @@
+<% @title = t('activerecord.models.subject.other') %>
 <h1><%= @title %></h1>
 <table class="subject-table">
   <tbody>
@@ -8,7 +9,7 @@
           <% if subject %>
           <%= image_tag subject.image %> <br>
           <div class="subject-name">
-            <%= t(subject.name) %>
+            <%= t("subjects.#{subject.name}") %>
           </div>
           <% end %>
         </td>

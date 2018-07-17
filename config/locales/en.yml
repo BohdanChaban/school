@@ -51,3 +51,70 @@ en:
     world_history: 'World history'
     world_literature: 'World literature'
     writing: 'Writing'
+  activerecord:
+    models:
+      achievement:
+        one:  Achievement
+        other: Achievements
+      article:
+        one:  Article
+        other: Articles
+      course:
+        one:  Course
+        other: Courses
+      group:
+        one:  Group
+        other: Groups
+      hometask: Hometask
+      lesson:
+        one:  Lesson
+        other: Lessons
+      subject:
+        one:  subject
+        other: Subjects
+      theme:
+        one:  Theme
+        other: Themes
+      user:
+        one:  User
+        other: Users
+    attributes:
+      achievement:
+        points: Points
+        attendance: Attendance
+        user: Student
+        created_at: Created at
+        updated_at: Updated at
+      article:
+        topic: Topic
+        summary: Summary
+        body: Body
+        created_at: Created at
+        updated_at: Updated at
+      course:
+        displayed: Displayed
+        group: Group
+        subject: Subject
+        created_at: Created at
+        updated_at: Updated at
+      group:
+        number: Number
+        parallel: Parallel
+      hometask:
+        description: Description
+        link: Link
+        lesson: Lesson
+        created_at:  Created at
+        updated_at: Updated at
+      lesson:
+        topic: Topic
+        description: Description
+        links: Links
+        date: Date
+        created_at: Created at
+      subject:
+        name: Name
+        image: Image
+      theme:
+        topic: Topic
+        course: Course
