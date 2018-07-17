@@ -55,6 +55,7 @@ RailsAdmin.config do |config|
       field :email
       field :role
       field :approved
+      field :group
     end
 
     show do
@@ -62,6 +63,7 @@ RailsAdmin.config do |config|
       field :surname
       field :email
       field :role
+      field :group
       field :approved
       field :last_sign_in_at
     end
@@ -72,6 +74,7 @@ RailsAdmin.config do |config|
       field :email
       field :role
       field :approved
+      field :group
     end
 
     create do
@@ -79,6 +82,7 @@ RailsAdmin.config do |config|
       field :surname
       field :email
       field :role
+      field :group
       field :approved
       field :password
       field :password_confirmation

@@ -12,11 +12,13 @@ class User < ApplicationRecord
 
   has_many :achievements, dependent: :destroy
 
+  belongs_to :group
+
   NAME_LENGTH_RANGE = 2..30
   EMAIL_LENGTH_RANGE = 6..40
   ROLES = %w[student curator teacher mentor].freeze
 
-  validates :name, :surname, :email, :groups, presence: true
+  validates :name, :surname, :email, :group, presence: true
   validates :name, length: { in: NAME_LENGTH_RANGE }
   validates :surname, length: { in: NAME_LENGTH_RANGE }
   validates :email, length: { in: EMAIL_LENGTH_RANGE }
