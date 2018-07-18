@@ -2,8 +2,7 @@
 
 class CoursesController < ApplicationController
   def show
-    @course = Course.includes("group","subject","user").where(id: params[:id])[0]
-    p @course
+    @course = Course.includes('group', 'subject', 'user').where(id: params[:id])[0]
     redirect_to root_path if redirect?
   end
 
