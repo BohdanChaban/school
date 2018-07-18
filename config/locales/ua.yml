@@ -118,7 +118,7 @@ ua:
         role: Роль
         approved: Підтвердженний
         encrypted_password: "Зашифрований пароль"
-        failed_attempts: "Хибниз спроб"
+        failed_attempts: "Хибних спроб"
         last_sign_in_at: "Останній раз заходив"
         last_sign_in_ip: IP останнього заходу
         locked_at: "Заблокований"
