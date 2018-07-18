@@ -9,8 +9,6 @@ class CoursesController < ApplicationController
   private
 
   def redirect?
-    return true unless @course.displayed
-    return true if current_user.student? && @course.group_id != current_user.group_id
-    false
+    !@course.displayed || @course.student_access_forbidden?(current_user)
   end
 end
