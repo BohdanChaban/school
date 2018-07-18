@@ -27,7 +27,7 @@ FactoryBot.define do
 
       factory :valid_user_with_group do
         after(:create) do |user|
-          create(:valid_group, user: user)
+          create(:valid_group, users: [user])
         end
       end
     end
