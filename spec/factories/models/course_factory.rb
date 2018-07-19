@@ -11,6 +11,10 @@ FactoryBot.define do
       factory :valid_course_with_displayed do
         displayed true
       end
+      factory :another_valid_course do
+        association :subject, factory: :another_valid_subject
+        association :group, factory: :another_valid_group
+      end
     end
   end
 end
