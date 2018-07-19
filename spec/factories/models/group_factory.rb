@@ -12,6 +12,11 @@ FactoryBot.define do
         end
       end
 
+      factory :another_valid_group do
+        number   6
+        parallel 'a'
+      end
+
       factory :valid_group_with_invalid_user_role do
         after(:create) do |group|
           create(:valid_user_for_teacher_role, group_id: group.id)
