@@ -1,4 +1,5 @@
+<%= image_tag "groups/#{course.group.number}.png", class: 'group-img' %>
+<%= image_tag "groups/#{course.group.parallel}.png", class: 'group-img' %>
 <div class="course-name">
   <%= t("subjects.#{course.subject.name}") %>
 </div>
-<%= "#{course.group.number}#{course.group.parallel}" %> <br>

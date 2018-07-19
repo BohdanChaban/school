@@ -5,11 +5,11 @@
     <% @courses.in_groups_of(4).each do |group| %>
       <tr class="row">
         <% group.each do |course| %>
-        <td class="course-item col-md-3">
-          <% if course %>
-            <%= render "#{current_user.role}", :course => course %>
-          <% end %>
-        </td>
+          <td class="course-item col-md-3">
+            <% if course %>
+              <%= render "#{current_user.role}", :course => course %>
+            <% end %>
+          </td>
         <% end %>
       </tr>
     <% end %>
