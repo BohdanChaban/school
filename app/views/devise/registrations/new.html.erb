@@ -33,7 +33,6 @@
         <%= f.label :role %>
 
         <%= f.select(:role) do %>
-          <%= content_tag(:option, "Select role", value: nil) %>
           <%= User.roles.each do |key, val| -%>
             <%= content_tag(:option, key, value: key) %>
           <% end %>
@@ -55,7 +54,7 @@
   </div>
 </div>
 <script>
-    $('#group_select').hide()
+    $('#group_select').show()
     $('#user_role').on('change', function() {
       if($(this).val() === 'student') return $('#group_select').show()
       $('#group_select').hide()
