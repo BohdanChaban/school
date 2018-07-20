@@ -18,7 +18,7 @@ class User < ApplicationRecord
   EMAIL_LENGTH_RANGE = 6..40
   ROLES = %w[student curator teacher mentor].freeze
 
-  validates_presence_of :group_id, :if => lambda { self.student? }
+  validates :group_id, presence: true, if: -> { student? }
 
   validates :name, :surname, :email, presence: true
   validates :name, length: { in: NAME_LENGTH_RANGE }
