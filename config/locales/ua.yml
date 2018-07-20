@@ -147,7 +147,7 @@ ua:
         current_sign_in_at: "Поточна сесія відкрита"
         current_sign_in_ip: IP поточної сесії
         name: Ім'я
-        surname: Фамілія
+        surname: Прізвище
         email: Електронна пошта
         role: Роль
         approved: Підтвердженний
