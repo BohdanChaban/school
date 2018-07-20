@@ -63,7 +63,9 @@ ua:
       group:
         one:  Клас
         other: Класи
-      hometask: Завдання
+      hometask:
+        one:  Домашнє завдання
+        other: Домашні завдання
       lesson:
         one:  Урок
         other: Уроки
@@ -147,7 +149,7 @@ ua:
         current_sign_in_at: "Поточна сесія відкрита"
         current_sign_in_ip: IP поточної сесії
         name: Ім'я
-        surname: Фамілія
+        surname: Прізвище
         email: Електронна пошта
         role: Роль
         approved: Підтвердженний

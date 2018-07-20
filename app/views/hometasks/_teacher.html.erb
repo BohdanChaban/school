@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <tr>
+      <th> <%= t('activerecord.models.course.one') %> </th>
+      <th> <%= t('activerecord.models.group.one') %> </th>
+      <th> <%= t('activerecord.attributes.hometask.description') %> </th>
+      <th> <%= t('activerecord.attributes.hometask.link') %> </th>
+      <th> <%= t('activerecord.attributes.hometask.lesson') %> </th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hometasks.each do |hometask| %>
+      <tr>
+        <td><%= t("subjects.#{hometask.lesson.theme.course.subject.name}") %></td>
+        <td><%= hometask.lesson.theme.course.group.name %></td>
+        <td><%= hometask.description %></td>
+        <td><%= hometask.link %></td>
+        <td><%= hometask.lesson.topic %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

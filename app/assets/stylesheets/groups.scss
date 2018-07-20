@@ -1,0 +1,26 @@
+.group-container {
+  display: flex;
+  margin: 20px 0;
+}
+
+.group-number {
+  margin: auto 0;
+}
+
+.group-number .group-img {
+  height: 100px;
+  width: 100px;
+}
+
+.back-btn {
+  margin: 20px 15px;
+  width: 120px;
+}
+
+.table-hover > tbody > tr:hover > td {
+  background-color: rgba(4, 196, 244, 0.1); //#d9edf7;
+}
+
+.group-user-number {
+  text-align: center;
+}
