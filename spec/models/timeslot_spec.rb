@@ -47,23 +47,24 @@ RSpec.describe Timeslot, type: :model do
     end
   end
 
-  it 'is not valid without uniqueness of number, day, course_id' do
+  it 'is not valid without uniqueness of number, day, group_id' do
     timeslot = FactoryBot.create(:valid_timeslot)
     timeslot2 = FactoryBot.build(:valid_timeslot, course_id: timeslot.course_id)
     expect(timeslot).to be_valid
     expect(timeslot2).not_to be_valid
   end
 
-  it 'is valid with unique number, day or course_id' do
+  it 'is valid with unique number, day or group_id' do
     timeslot = FactoryBot.create(:valid_timeslot)
     timeslot2 = FactoryBot.build(:another_timeslot, course_id: timeslot.course_id)
     expect(timeslot).to be_valid
     expect(timeslot2).to be_valid
   end
 
-  it 'doesnt save not unique number, day and course_id record to db' do
-    Timeslot.create(FactoryBot.attributes_for(:valid_timeslot))
-    timeslot = Timeslot.new(FactoryBot.attributes_for(:valid_timeslot)).save
-    expect(timeslot).to eq false
+  it 'doesnt save not unique number, day and group_id record to db' do
+    timeslot = FactoryBot.create(:valid_timeslot)
+    another_course = FactoryBot.create(:another_valid_course, group_id: timeslot.course.group_id)
+    timeslot2 = FactoryBot.build(:valid_timeslot_for_other_course, course_id: another_course.id).save
+    expect(timeslot2).to eq false
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180716112615) do
+ActiveRecord::Schema.define(version: 20180719100156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,8 +109,9 @@ ActiveRecord::Schema.define(version: 20180716112615) do
     t.bigint "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "group_id"
     t.index ["course_id"], name: "index_timeslots_on_course_id"
-    t.index ["day", "number", "course_id"], name: "index_timeslots_on_day_and_number_and_course_id", unique: true
+    t.index ["day", "number", "group_id"], name: "index_timeslots_on_day_and_number_and_group_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
