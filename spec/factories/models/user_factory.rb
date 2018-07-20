@@ -5,10 +5,9 @@ FactoryBot.define do
     # Factories for valid user
     factory :valid_user do
       @pass = 'password'
-
-      email 'username@example.com'
-      name 'Username'
-      surname 'Usersurname'
+      sequence(:email) { |n| "username#{n}@example.com" }
+      sequence(:name) { |n| "username#{n}" }
+      sequence(:surname) { |n| "usersurname#{n}" }
       password @pass
 
       factory :valid_user_for_registration do
@@ -16,18 +15,18 @@ FactoryBot.define do
       end
 
       factory :valid_user_for_mentor_role do
-        email 'mentor@example.com'
+        sequence(:email) { |n| "mentor#{n}@example.com" }
         role 'mentor'
       end
 
       factory :valid_user_for_teacher_role do
-        email 'teacher@example.com'
+        sequence(:email) { |n| "teacher#{n}@example.com" }
         role 'teacher'
       end
 
       factory :valid_user_with_group do
         after(:create) do |user|
-          create(:valid_group, user: user)
+          create(:valid_group, users: [user])
         end
       end
     end

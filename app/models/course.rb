@@ -8,4 +8,8 @@ class Course < ApplicationRecord
   validates :group_id, :subject_id, :user_id, presence: true
 
   has_many :themes, dependent: :destroy
+
+  def student_access_forbidden?(user)
+    user.student? && group_id != user.group_id
+  end
 end
