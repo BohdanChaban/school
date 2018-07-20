@@ -37,9 +37,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'rubocop'
 
 # Code coverage analysis tools for Ruby.
+gem 'coveralls', require: false
 gem 'simplecov', require: false, group: :test
 gem 'simplecov-console', require: false
-gem 'coveralls', require: false
 
 # Use RailsAdmin is a Rails engine that provides an easy-to-use interface for managing your data.
 gem 'rails_admin', '~> 1.3'
