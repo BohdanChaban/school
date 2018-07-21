@@ -14,7 +14,9 @@ class ThemesController < ApplicationController
   def create
     @theme = Theme.new(theme_params)
     if @theme.save
-      redirect_to course_path(id: @theme.course_id), notice: t('actions.success.create', resource: theme_locale)
+      redirect_to course_path(id: @theme.course_id),
+                  notice: t('actions.success.create',
+                            resource: theme_locale)
     else
       render :new
     end
@@ -22,7 +24,9 @@ class ThemesController < ApplicationController
 
   def update
     if theme.update(theme_params)
-      redirect_to course_path(id: @theme.course_id), notice: t('actions.success.update', resource: theme_locale)
+      redirect_to course_path(id: @theme.course_id),
+                  notice: t('actions.success.update',
+                            resource: theme_locale)
     else
       render :edit
     end
@@ -30,7 +34,9 @@ class ThemesController < ApplicationController
 
   def destroy
     theme.destroy
-    redirect_to course_path(id: @theme.course_id), notice: t('actions.success.destroy', resource: theme_locale)
+    redirect_to course_path(id: @theme.course_id),
+                notice: t('actions.success.destroy',
+                          resource: theme_locale)
   end
 
   private
