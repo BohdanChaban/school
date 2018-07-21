@@ -13,7 +13,7 @@
                 <p> <%= Date.today %> </p> 
                 <%= t("days.#{day}") %> 
               </th>
-              <th scope="col" > <%= t('menu.hometask') %> </th>
+              <th scope="col" > <%= t('activerecord.models.hometask.other') %> </th>
             </tr>
           </thead>
 
@@ -22,7 +22,7 @@
               <tr>
                 <td scope="row"> <%= timeslot %> </td> 
                 <td>
-                  <%= timetable_by_day[index][:subject].name if timetable_by_day[index] %>  
+                  <%= t("subjects.#{timetable_by_day[index][:subject].name}") if timetable_by_day[index] %>  
                 </td>
                 <td> 
                  <%= timetable_by_day[index][:hometask] if timetable_by_day[index] %> 

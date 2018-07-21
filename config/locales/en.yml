@@ -28,6 +28,7 @@ en:
     teachers: 'Teachers'
     about_us: 'About us'
     subjects: 'Subjects'
+    timetable: 'Timetable'
   subjects:
     algebra: 'Algebra'
     art: 'Art'
@@ -89,6 +90,7 @@ en:
       teacher:
         one: Teacher
         other: Teachers
+      timetable: Timetable
       theme:
         one:  Theme
         other: Themes
