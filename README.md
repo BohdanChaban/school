@@ -1,3 +1,9 @@
+[![Build Status](https://travis-ci.org/BohdanChaban/school.svg?branch=master)](https://travis-ci.org/BohdanChaban/school)
+
+[![Coverage Status](https://coveralls.io/repos/github/BohdanChaban/school/badge.svg?branch=master)](https://coveralls.io/github/BohdanChaban/school?branch=master)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/6bec43f1b50b77f18432/maintainability)](https://codeclimate.com/github/BohdanChaban/school/maintainability)
+
 # SCHOOL APPLICATION
 
 * Database setup:

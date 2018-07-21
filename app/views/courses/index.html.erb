@@ -1,17 +1,17 @@
 <% @title = t('activerecord.models.course.other') %>
 <h1><%= @title %></h1>
-<table class="course-table">
-  <tbody>
+<section class="course-section">
     <% @courses.in_groups_of(4).each do |group| %>
-      <tr class="row">
+      <div class="row">
         <% group.each do |course| %>
-          <td class="course-item col-md-3">
-            <% if course %>
-              <%= render "#{current_user.role}", :course => course %>
-            <% end %>
-          </td>
+          <% if course %>
+            <a href=<%= course_path course %> >
+              <div class="course-item col-md-3">
+                <%= render "#{current_user.role}", :course => course %>
+              </div>
+            </a>
+          <% end %>
         <% end %>
-      </tr>
+      </div>
     <% end %>
-  </tbody>
-</table>
+</section>

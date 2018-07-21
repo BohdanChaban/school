@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  skip_before_action :authenticate_user!
 
-  def dashboard
-    # magic here
+  def index
+    @teachers = User.teacher.includes(:subjects)
   end
 end

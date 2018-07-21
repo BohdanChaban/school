@@ -22,6 +22,7 @@ RSpec.describe User, type: :model do
   let(:long_error_name)    { 'is too long (maximum is 30 characters)' }
   let(:short_error_email)  { 'is too short (minimum is 6 characters)' }
   let(:long_error_email)   { 'is too long (maximum is 40 characters)' }
+  let(:unique_error_email) { 'has already been taken' }
   let(:invalid_error)      { 'is invalid' }
   let(:blank_error)        { 'can\'t be blank' }
   let(:confirmation_error) { 'doesn\'t match Password' }
@@ -133,6 +134,10 @@ RSpec.describe User, type: :model do
   end
 
   it 'is not valid with duplicated email' do
+    user = FactoryBot.create(:valid_user_for_registration)
+    user2 = FactoryBot.build(:valid_user_for_registration, email: user.email)
+    expect(user2).not_to be_valid
+    expect(user2.errors.messages[:email]).to eq [unique_error_email]
   end
 
   it 'is not valid without a name' do

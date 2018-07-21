@@ -31,20 +31,32 @@ en:
   subjects:
     algebra: 'Algebra'
     art: 'Art'
+    artistic_art: 'Artistic art'
+    art_culture: 'Art culture'
+    arts_and_crafts: 'Arts and crafts'
+    astronomy: 'Astronomy'
     biology: 'Biology'
     chemistry: 'Chemistry'
     computer_science: 'Computer science'
+    ecology: "Ecology"
+    economics: 'Economics'
     english: 'English'
+    ethics: 'Ethics'
     french: 'French'
     geography: 'Geography'
     geometry: 'Geometry'
     german: 'German'
+    health_basics: 'Health basics'
+    i_in_world: 'I in world'
     math: 'Math'
     musical_art: 'Musical art'
+    natural_science: 'Natural science'
     physical_culture: 'Physical culture'
     physics: 'Physics'
     polish: 'Polish'
     reading: 'Reading'
+    science_of_law: 'Science of law'
+    technologies: 'Technologies'
     ukrainian: 'Ukrainian'
     ukrainian_history: 'Ukrainian history'
     ukrainian_literature: 'Ukrainian literature'
@@ -65,13 +77,18 @@ en:
       group:
         one:  Group
         other: Groups
-      hometask: Hometask
+      hometask:
+        one:  Hometask
+        other: Hometasks
       lesson:
         one:  Lesson
         other: Lessons
       subject:
         one:  subject
         other: Subjects
+      teacher:
+        one: Teacher
+        other: Teachers
       theme:
         one:  Theme
         other: Themes
@@ -119,3 +136,7 @@ en:
       theme:
         topic: Topic
         course: Course
+      user:
+        name: Name
+        surname: Surname
+        email: Email

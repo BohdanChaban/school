@@ -17,4 +17,8 @@ class Group < ApplicationRecord
   validates :number, uniqueness: { scope: :parallel }
   validates :parallel, length: { is: PARALLEL_LENGTH_RANGE }
   validates :parallel, inclusion: { in: PARALLELS }
+
+  def name
+    "#{number}#{parallel}"
+  end
 end
