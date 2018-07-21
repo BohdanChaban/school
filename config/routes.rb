@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   resources :users, only: %i[index]
   resources :hometasks, only: %i[index]
   resources :timeslots, only: %i[index]
+  resources :themes, except: %i[index show]
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 end
