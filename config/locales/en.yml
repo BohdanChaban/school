@@ -14,6 +14,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  actions:
+    success:
+      create: "%{resource} was successfully created."
+      update: "%{resource} was successfully updated."
+      destroy: "%{resource} was successfully destroyed."
   title: 'School'
   news: 'School news'
   topic: 'Topic'
