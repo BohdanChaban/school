@@ -69,3 +69,7 @@ body, html {
 .right {
     float: right;
 }
+
+.table-hover > tbody > tr:hover > td {
+  background-color: rgba(4, 196, 244, 0.1);
+}
