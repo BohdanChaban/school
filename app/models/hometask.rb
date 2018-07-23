@@ -7,4 +7,11 @@ class Hometask < ApplicationRecord
   scope :for_course, lambda { |course|
                        joins(:lesson).where(lessons: { theme_id: course.themes })
                      }
+  def subject_name
+    lesson.theme.course.subject.name
+  end
+
+  def group_name
+    lesson.theme.course.group.name
+  end
 end

@@ -98,7 +98,10 @@ ua:
     attributes:
       achievement:
         points: Оцінки
+        point: Оцінка
         attendance: Відвідування
+        kind: Вид
+        lesson: Урок
         user: Студент
         created_at: Створено
         updated_at: Змінено
@@ -500,4 +503,4 @@ ua:
   helpers:
     submit:
       create: "Створити %{model}"
-      update: "Оновити %{model}"
+      update: "Оновити %{model}"  
