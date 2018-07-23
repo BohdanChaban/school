@@ -68,7 +68,6 @@ en:
     ukrainian_literature: 'Ukrainian literature'
     world_history: 'World history'
     world_literature: 'World literature'
-    writing: 'Writing'
   activerecord:
     models:
       achievement:

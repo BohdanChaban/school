@@ -7,7 +7,7 @@
         <% group.each do |subject| %>
           <td class="subject-item col-md-3">
             <% if subject %>
-              <%= image_tag subject.image %>
+              <%= image_tag subject.image, alt: subject.name %>
               <div class="subject-name">
                 <%= t("subjects.#{subject.name}") %>
               </div>
