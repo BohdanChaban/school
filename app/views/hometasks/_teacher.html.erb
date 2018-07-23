@@ -12,13 +12,15 @@
 
   <tbody>
     <% @hometasks.each do |hometask| %>
-      <tr>
-        <td><%= t("subjects.#{hometask.lesson.theme.course.subject.name}") %></td>
-        <td><%= hometask.lesson.theme.course.group.name %></td>
-        <td><%= hometask.description %></td>
-        <td><%= hometask.link %></td>
-        <td><%= hometask.lesson.topic %></td>
-      </tr>
+      <% if hometask %>
+        <tr>
+          <td><%= t("subjects.#{hometask.subject_name}") %></td>
+          <td><%= hometask.group_name %></td>
+          <td><%= hometask.description %></td>
+          <td><%= hometask.link %></td>
+          <td><%= hometask.lesson.topic %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
