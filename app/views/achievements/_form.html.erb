@@ -1,0 +1,67 @@
+<%= form_with(model: achievement, local: true) do |form| %>
+  <% if achievement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(achievement.errors.count, "error") %> prohibited this achievement from being saved:</h2>
+
+      <ul>
+      <% achievement.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :point %>
+    <%= form.select :points do %>
+      <% points = Achievement::POINTS_RANGE.map { |point| [point, point] } %>
+      <%= options_for_select(points) %> 
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :kind %>
+    <%= form.select :kind do %>
+      <% kinds = Achievement::KINDS.map do |kind_elem| %>
+        <% text = t("kinds.#{kind_elem}") %>
+        <% value = kind_elem %>
+        <% [text, value ] %>
+      <% end %>
+      <%= options_for_select(kinds) %> 
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lesson %>
+    <%= form.select :lesson_id do %>
+      <% lessons = Lesson.all.map do |lesson| %>
+        <% text = "#{lesson.topic}" %>
+        <% value = lesson.id %>
+        <% [text, value ] %>
+      <% end %>
+      <%= options_for_select(lessons) %> 
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user %>
+    <%= form.select :user_id do %>
+      <% lessons = User.where(role: 'student').map do |student| %>
+        <% text = "#{student.name} #{student.surname}" %>
+        <% value = student.id %>
+        <% [text, value ] %>
+      <% end %>
+      <%= options_for_select(lessons) %> 
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :attendance %>
+    <%= form.check_box :attendance %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
