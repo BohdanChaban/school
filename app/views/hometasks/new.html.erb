@@ -1,0 +1,2 @@
+<h1> <%=t('activerecord.models.hometask.new')%> </h1>
+<%= render 'form', hometask: @hometask, lessons: current_user.lessons.without_hometask %>

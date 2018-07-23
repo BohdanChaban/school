@@ -1,4 +1,9 @@
 ua:
+  actions:
+    success:
+      create: "%{resource} успішно створено."
+      update: "%{resource} успішно обновлено."
+      destroy: "%{resource} успішно видалено."
   title: 'Школа'
   news: 'Новини школи'
   topic: 'Розділ'
@@ -13,6 +18,7 @@ ua:
     teachers: 'Вчителі'
     about_us: 'Про нас'
     subjects: 'Предмети'
+    timetable: 'Розклад'
   subjects:
     algebra: 'Алгебра'
     art: 'Мистецтво'
@@ -47,7 +53,12 @@ ua:
     ukrainian_literature: 'Українська література'
     world_history: 'Всесвітня історія'
     world_literature: 'Зарубіжна література'
-    writing: 'Писання'
+  days:
+    monday: Понеділок
+    tuesday: Вівторок
+    wednesday: Середа
+    thursday: Четверг
+    friday: П'ятниця
   activerecord:
     models:
       achievement:
@@ -63,19 +74,27 @@ ua:
       group:
         one:  Клас
         other: Класи
-      hometask: Завдання
+      hometask:
+        one:  Домашнє завдання
+        other: Домашні завдання
+        new: Нове домашнє завдання
+        edit: Редагування домашнього завдання
       lesson:
         one:  Урок
         other: Уроки
       subject:
         one:  Предмет
         other: Предмети
+      timetable: Розклад
       theme:
         one:  Тема
         other: Теми
       user:
         one:  Користувач
         other: Користувачі
+      teacher:
+        one: Вчитель
+        other: Вчителі
     attributes:
       achievement:
         points: Оцінки
@@ -123,7 +142,7 @@ ua:
       hometask:
         description: Опис
         link: Посилання
-        lesson: Урок
+        lesson_id: Урок
         created_at: Створено
         updated_at: Змінено
       lesson:
@@ -147,7 +166,7 @@ ua:
         current_sign_in_at: "Поточна сесія відкрита"
         current_sign_in_ip: IP поточної сесії
         name: Ім'я
-        surname: Фамілія
+        surname: Прізвище
         email: Електронна пошта
         role: Роль
         approved: Підтвердженний
@@ -478,3 +497,7 @@ ua:
         col_sep: "Роздільник стовпців"
         col_sep_help: "Залишити пустим по замовчуванню ('%{value}')" # value is default_col_sep
 # end rails_admin locale
+  helpers:
+    submit:
+      create: "Створити %{model}"
+      update: "Оновити %{model}"

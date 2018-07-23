@@ -1,0 +1,33 @@
+<%= form_with(model: theme, local: true) do |form| %>
+  <% if theme.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(theme.errors.count, "error") %> prohibited this theme from being saved:</h2>
+
+      <ul>
+      <% theme.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :topic %>
+    <%= form.text_field :topic %>
+  </div>
+
+  <div class="field">
+    <%= form.label :course %>
+    <%= form.select :course_id do %>
+      <% courses = Course.includes(:group, :subject).all.map do |course| %>
+        <% text = "#{course.subject.name}|#{course.group.number}#{course.group.parallel}" %>
+        <% value = course.id %>
+        <% [text, value ] %>
+      <% end %>
+      <%= options_for_select(courses) %> 
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

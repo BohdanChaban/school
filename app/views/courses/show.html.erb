@@ -1,4 +1,4 @@
-<% @title = t('activerecord.models.course.other') %>
+<% @title = t('activerecord.models.course.one') %>
 <h1> <%= @title %></h1>
 <table>
   <thead>
@@ -26,5 +26,9 @@
     </tr>
   </tbody>
 </table>
+
+<%= link_to "New Theme", new_theme_path if current_user.teacher? %>
+
+<%= render 'themes' %>
 
 <%= link_to 'Back', groups_path unless current_user.student? %>

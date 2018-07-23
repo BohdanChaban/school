@@ -78,3 +78,6 @@ gem 'rspec-rails'
 
 # Localization
 gem 'i18n'
+
+# UI
+gem 'jquery-rails'

@@ -1,0 +1,33 @@
+<%= form_with(model: hometask, local: true) do |form| %>
+  <% if hometask.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hometask.errors.count, "error") %> prohibited this hometask from being saved:</h2>
+
+      <ul>
+      <% hometask.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :link %>
+    <%= form.text_field :link %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lesson_id %>
+    <%= form.select :lesson_id,
+     options_from_collection_for_select(lessons, 'id', 'topic') %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

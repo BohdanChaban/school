@@ -14,6 +14,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  actions:
+    success:
+      create: "%{resource} was successfully created."
+      update: "%{resource} was successfully updated."
+      destroy: "%{resource} was successfully destroyed."
   title: 'School'
   news: 'School news'
   topic: 'Topic'
@@ -28,6 +33,7 @@ en:
     teachers: 'Teachers'
     about_us: 'About us'
     subjects: 'Subjects'
+    timetable: 'Timetable'
   subjects:
     algebra: 'Algebra'
     art: 'Art'
@@ -62,7 +68,6 @@ en:
     ukrainian_literature: 'Ukrainian literature'
     world_history: 'World history'
     world_literature: 'World literature'
-    writing: 'Writing'
   activerecord:
     models:
       achievement:
@@ -77,13 +82,21 @@ en:
       group:
         one:  Group
         other: Groups
-      hometask: Hometask
+      hometask:
+        one:  Hometask
+        other: Hometasks
+        new: New hometask
+        edit: Edit hometask
       lesson:
         one:  Lesson
         other: Lessons
       subject:
         one:  subject
         other: Subjects
+      teacher:
+        one: Teacher
+        other: Teachers
+      timetable: Timetable
       theme:
         one:  Theme
         other: Themes
@@ -131,3 +144,7 @@ en:
       theme:
         topic: Topic
         course: Course
+      user:
+        name: Name
+        surname: Surname
+        email: Email
