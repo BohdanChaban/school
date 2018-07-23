@@ -4,7 +4,6 @@
   <thead>
     <tr>
       <th> <%= t('activerecord.attributes.course.group') %> </th>
-      <th> <%= t('activerecord.models.user.other') %> </th>
       <th> <%= t('activerecord.attributes.course.subject') %> </th>
       <th> <%= t('activerecord.attributes.course.user') %> </th>
       <th colspan="3"></th>
@@ -18,16 +17,6 @@
           <%= "#{@course.group.number}-#{@course.group.parallel}" %>
         </a>
       </td>
-
-
-      <% @course.group.users.each do |student| %>
-        <td>
-          <a href=<%= group_path @course.group.id %> >
-            <%= "#{student.name} #{student.surname}" %>
-          </a>
-        </td>
-      <% end %>
-
       <td>
         <%= t("subjects.#{@course.subject.name}") %>
       </td>
@@ -37,6 +26,8 @@
     </tr>
   </tbody>
 </table>
+
+<%= render 'students' %>
 
 <%= link_to "New Theme", new_theme_path if current_user.teacher? %>
 
