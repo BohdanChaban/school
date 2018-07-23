@@ -59,11 +59,6 @@ ActiveRecord::Schema.define(version: 20180722080413) do
     t.bigint "user_id", null: false
   end
 
-  create_table "fuckbitches", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "groups", force: :cascade do |t|
     t.integer "number", null: false
     t.string "parallel", null: false
