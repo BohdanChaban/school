@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180719100156) do
+ActiveRecord::Schema.define(version: 20180722080413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,9 +54,14 @@ ActiveRecord::Schema.define(version: 20180719100156) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "displayed", default: true, null: false
-    t.bigint "group_id"
-    t.bigint "subject_id"
-    t.bigint "user_id"
+    t.bigint "group_id", null: false
+    t.bigint "subject_id", null: false
+    t.bigint "user_id", null: false
+  end
+
+  create_table "fuckbitches", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "groups", force: :cascade do |t|
@@ -131,7 +136,7 @@ ActiveRecord::Schema.define(version: 20180719100156) do
     t.inet "last_sign_in_ip"
     t.integer "role", default: 0, null: false
     t.boolean "approved", default: false, null: false
-    t.integer "group_id", default: 0, null: false
+    t.integer "group_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
