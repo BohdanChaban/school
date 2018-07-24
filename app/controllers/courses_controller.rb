@@ -13,6 +13,7 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.includes('group', 'subject', 'user').find(params[:id])
+    @title = t('activerecord.models.course.one')
     redirect_to root_path if redirect?
   end
 

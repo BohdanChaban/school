@@ -1,36 +1,7 @@
-<% @title = t('activerecord.models.course.one') %>
-<h1> <%= @title %></h1>
-<table>
-  <thead>
-    <tr>
-      <th> <%= t('activerecord.attributes.course.group') %> </th>
-      <th> <%= t('activerecord.attributes.course.subject') %> </th>
-      <th> <%= t('activerecord.attributes.course.user') %> </th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= render 'course-header' %>
 
-  <tbody>
-    <tr>
-      <td>
-        <a href=<%= group_path @course.group.id %> >
-          <%= "#{@course.group.number}-#{@course.group.parallel}" %>
-        </a>
-      </td>
-      <td>
-        <%= t("subjects.#{@course.subject.name}") %>
-      </td>
-      <td>
-        <%= "#{@course.user.name} #{@course.user.surname}" %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<%= render 'teacher-journal' if current_user.teacher? %>
 
-<%= link_to t('activerecord.models.theme.new'), new_theme_path if current_user.teacher? %>
-<%= link_to t('activerecord.models.lesson.new'), new_lesson_path if current_user.teacher? %>
+<%= render 'students' if current_user.student? %>
 
-<%= render 'students' %>
-<%= render 'themes' %>
-<%= render 'lessons' %>
-<%= link_to t(:back), groups_path unless current_user.student? %>
+<%= link_to t(:back), courses_path, class: 'btn btn-info back-btn' %>

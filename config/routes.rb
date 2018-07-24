@@ -2,17 +2,27 @@
 
 Rails.application.routes.draw do
   devise_for :admin, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup' }
-  root to: 'articles#index'
-  devise_for :users
-  resources :articles, only: %i[index show]
-  resources :groups, only: %i[index show]
-  resources :subjects, only: %i[index]
-  resources :courses, only: %i[index show]
-  resources :lessons
-  resources :users, only: %i[index]
-  resources :hometasks
-  resources :timeslots, only: %i[index]
-  resources :themes, except: %i[index show]
-  resources :achievements, except: %i[index show]
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  devise_for :users
+  resources :users, only: %i[index]
+
+  root to: 'articles#index'
+  resources :articles, only: %i[index show]
+
+  resources :groups, only: %i[index show]
+
+  resources :subjects, only: %i[index]
+
+  resources :courses, only: %i[index show] do
+    resources :themes, except: %i[index show]
+  end
+
+  resources :lessons, except: %i[index show]
+
+  resources :hometasks
+
+  resources :timeslots, only: %i[index]
+
+  resources :achievements, except: %i[index show]
 end
