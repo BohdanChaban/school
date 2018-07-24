@@ -1,0 +1,17 @@
+<table class="course-header">
+  <tbody>
+  <tr>
+    <td class="col-md-3">
+      <a href=<%= group_path @course.group.id %> >
+        <%= "#{@course.group.number}-#{@course.group.parallel}" %>
+      </a>
+    </td>
+    <td class="col-md-4">
+      <%= t("subjects.#{@course.subject.name}") %>
+    </td>
+    <td class="col-md-5">
+      <%= "#{@course.user.surname} #{@course.user.name}" %>
+    </td>
+  </tr>
+  </tbody>
+</table>

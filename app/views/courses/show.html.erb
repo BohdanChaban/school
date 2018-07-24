@@ -1,74 +1,7 @@
-<table class="course-header">
-  <tbody>
-    <tr>
-      <td class="col-md-3">
-        <a href=<%= group_path @course.group.id %> >
-          <%= "#{@course.group.number}-#{@course.group.parallel}" %>
-        </a>
-      </td>
-      <td class="col-md-4">
-        <%= t("subjects.#{@course.subject.name}") %>
-      </td>
-      <td class="col-md-5">
-        <%= "#{@course.user.surname} #{@course.user.name}" %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<%= render 'course-header' %>
 
-<table class="table table-hover table-bordered">
-  <thead class="journal-thead">
-    <tr>
-      <th class="col-md-2 topic"> <%= t('activerecord.models.theme.other') %> </th>
-      <% @course.themes.each do |theme| %>
-        <th colspan="<%= theme.lessons.count * 2 + 1 %>">
-          <%= link_to theme.id, edit_course_theme_path(id: theme, course_id: @course) %>
-        </th>
-      <% end %>
-      <th class="plus-item">
-        <%= link_to image_tag('plus.png'), new_course_theme_path(course_id: @course), class: 'plus-link' %>
-      </th>
-    </tr>
-    <tr>
-      <th class="col-md-2 topic"> <%= t('activerecord.models.lesson.other') %> </th>
-      <% @course.themes.each do |theme| %>
-        <% theme.lessons.each do |lesson| %>
-          <th colspan="2"> <%= lesson.date %> </th>
-        <% end %>
-        <th class="plus-item">
-          <%= link_to image_tag('plus.png'), new_lesson_path, class: 'plus-link' %>
-        </th>
-      <% end %>
-      <th></th>
-    </tr>
-  </thead>
+<%= render 'teacher-journal' if current_user.teacher? %>
 
-  <tbody>
-    <% @course.group.users.each do |student| %>
-      <tr class="student-row">
-        <td class="col-md-2">
-          <%= "#{student.surname}" %> <%= "#{student.name}" %>
-        </td>
-        <% @course.themes.each do |theme| %>
-          <% theme.lessons.each do |lesson| %>
-            <% ach = @course.achievements_hash[lesson.id][student.id] %>
-            <td class="points center <%= ach[:type] if ach %>">
-              <%= ach[:points] if ach %>
-            </td>
-            <td class="attendance center">
-              <%= 'н' if ach && !ach[:attendance] %>
-            </td>
-          <% end %>
-          <td class="center"></td>
-        <% end %>
-        <td></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%#= render 'students' %>
-<%#= render 'themes' %>
-<%#= render 'lessons' %>
+<%= render 'students' if current_user.student? %>
 
 <%= link_to t(:back), courses_path, class: 'btn btn-info back-btn' %>
