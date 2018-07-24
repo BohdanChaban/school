@@ -18,7 +18,7 @@
         <th colspan="2"> <%= lesson.date %> </th>
       <% end %>
       <th class="plus-item">
-        <%= link_to image_tag('plus.png'), new_lesson_path, class: 'plus-link' %>
+        <%= link_to image_tag('plus.png'), new_course_theme_lesson_path(theme_id: theme.id, course_id: @course.id), class: 'plus-link' %>
       </th>
     <% end %>
     <th></th>
