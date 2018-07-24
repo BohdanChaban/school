@@ -12,4 +12,17 @@ class Course < ApplicationRecord
   def student_access_forbidden?(user)
     user.student? && group_id != user.group_id
   end
+
+  def achievements_hash
+    hash = {}
+    themes.each do |theme|
+      theme.lessons.each do |lesson|
+        hash[lesson.id] = {}
+        lesson.achievements.each do |ach|
+          hash[lesson.id][ach.user.id] = { points: ach.points, type: ach.kind, attendance: ach.attendance }
+        end
+      end
+    end
+    hash
+  end
 end

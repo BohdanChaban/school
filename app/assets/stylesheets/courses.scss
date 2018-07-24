@@ -33,3 +33,55 @@
   text-align: center;
   margin: 20px 0 40px;
 }
+
+.course-header {
+  height: 60px;
+  width: 100%;
+  background-color: rgba(4, 196, 244, 0.1);
+  margin: 20px 0 30px;
+  border-radius: 25px;
+  text-align: center;
+  font-size: 22px;
+}
+
+.journal-thead > tr > th {
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+}
+
+.plus-link > img {
+  width: 25px;
+  height: 25px;
+}
+
+.points, .attendance, .plus-item {
+  width: 50px;
+}
+
+.student-row {
+  .normal {
+    background-color: rgba(4, 196, 244, 0.2);
+  }
+  .notebook {
+    background-color: rgba(244, 236, 12, 0.2);
+  }
+  .thematic {
+    background-color: rgba(33, 244, 19, 0.2);
+  }
+  .semester {
+    background-color: rgba(244, 15, 10, 0.2);
+  }
+  .year {
+    background-color: rgba(16, 35, 244, 0.2);
+  }
+  .false {
+    background-color: rgba(244, 26, 13, 0.2);
+  }
+}
+
+.journal-thead > tr > .topic {
+  text-align: right;
+}
