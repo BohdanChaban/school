@@ -52,4 +52,9 @@ RSpec.describe Course, type: :model do
     course = FactoryBot.build(:valid_course, user_id: string)
     expect(course).to_not be_valid
   end
+  it 'is valid with empty achievements_hash' do
+    course = FactoryBot.build(:valid_course)
+    expect(course).to be_valid
+    expect(course.achievements_hash).to eq({})
+  end
 end
