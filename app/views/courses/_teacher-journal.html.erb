@@ -1,50 +1,69 @@
-<table class="table table-hover table-bordered">
-  <thead class="journal-thead">
-  <tr>
-    <th class="col-md-2 topic"> <%= t('activerecord.models.theme.other') %> </th>
-    <% @course.themes.each do |theme| %>
-      <th colspan="<%= theme.lessons.count * 2 + 1 %>">
-        <%= link_to theme.id, edit_course_theme_path(id: theme, course_id: @course) %>
-      </th>
-    <% end %>
-    <th class="plus-item">
-      <%= link_to image_tag('plus.png'), new_course_theme_path(course_id: @course), class: 'plus-link' %>
-    </th>
-  </tr>
-  <tr>
-    <th class="col-md-2 topic"> <%= t('activerecord.models.lesson.other') %> </th>
-    <% @course.themes.each do |theme| %>
-      <% theme.lessons.each do |lesson| %>
-        <th colspan="2"> <%= lesson.date %> </th>
-      <% end %>
-      <th class="plus-item">
-        <%= link_to image_tag('plus.png'), new_course_theme_lesson_path(theme_id: theme.id, course_id: @course.id), class: 'plus-link' %>
-      </th>
-    <% end %>
-    <th></th>
-  </tr>
-  </thead>
+<div id="table-scroll" class="table-scroll">
+  <div class="table-wrap">
+    <table class="table table-hover table-bordered journal-table">
+    <!--<table class="table table-hover table-bordered journal-table">-->
+      <thead class="journal-thead">
+        <tr>
+          <th class="topic fixed">
+            <%= t('activerecord.models.theme.other') %>
+          </th>
+          <% @course.themes.each do |theme| %>
+            <th colspan="<%= theme.lessons.count * 2 + 1 %>">
+              <%= link_to theme.id, edit_course_theme_path(id: theme, course_id: @course) %>
+            </th>
+          <% end %>
+          <th class="plus-item">
+            <%= link_to image_tag('plus.png'), new_course_theme_path(course_id: @course), class: 'plus-link' %>
+          </th>
+        </tr>
+        <tr>
+          <th class="topic fixed">
+            <%= t('activerecord.models.lesson.other') %>
+          </th>
+          <% @course.themes.each do |theme| %>
+            <% theme.lessons.each do |lesson| %>
+              <th colspan="2">
+                <% lesson_link = lesson.date ? lesson.date.strftime("%e.%m") : '--.--' %>
+                <%= link_to lesson_link, edit_course_theme_lesson_path(id: lesson, theme_id: theme.id, course_id: @course) %>
+              </th>
+            <% end %>
+            <th class="plus-item">
+              <%= link_to image_tag('plus.png'), new_course_theme_lesson_path(theme_id: theme.id, course_id: @course.id), class: 'plus-link' %>
+            </th>
+          <% end %>
+          <th></th>
+        </tr>
+      </thead>
 
-  <tbody>
-  <% @course.group.users.each do |student| %>
-    <tr class="student-row">
-      <td class="col-md-2">
-        <%= "#{student.surname}" %> <%= "#{student.name}" %>
-      </td>
-      <% @course.themes.each do |theme| %>
-        <% theme.lessons.each do |lesson| %>
-          <% ach = @course.achievements_hash[lesson.id][student.id] %>
-          <td class="points center <%= ach[:type] if ach %>">
-            <%= ach[:points] if ach %>
-          </td>
-          <td class="attendance center">
-            <%= 'н' if ach && !ach[:attendance] %>
-          </td>
+      <tbody>
+        <% @course.group.users.each do |student| %>
+          <tr class="student-row">
+            <td class="student-name fixed">
+              <%= "#{student.surname}" %> <%= "#{student.name}" %>
+            </td>
+            <% @course.themes.each do |theme| %>
+              <% theme.lessons.each do |lesson| %>
+                <% ach = @course.achievements_hash[lesson.id][student.id] %>
+                <td class="points center <%= ach[:type] if ach %>">
+                  <%= ach[:points] if ach %>
+                </td>
+                <td class="attendance center">
+                  <%= 'н' if ach && !ach[:attendance] %>
+                </td>
+              <% end %>
+              <td class="center"></td>
+            <% end %>
+            <td></td>
+          </tr>
         <% end %>
-        <td class="center"></td>
-      <% end %>
-      <td></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+      $(".journal-table").clone(true).appendTo('#table-scroll').addClass('clone');
+      $(".clone").removeClass('table-bordered')
+  });
+</script>

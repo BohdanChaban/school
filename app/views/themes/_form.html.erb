@@ -1,32 +1,39 @@
-<%= form_with(model: [@course, @theme], local: true) do |form| %>
-  <% if @theme.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(theme.errors.count, "error") %> prohibited this theme from being saved:</h2>
+<div class="form-container">
+  <%= form_with(model: [@course, @theme], local: true) do |form| %>
+    <% if @theme.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(theme.errors.count, "error") %> prohibited this theme from being saved:</h2>
 
-      <ul>
-      <% theme.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% theme.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field form-group">
+      <%= form.label :topic %>
+      <%= form.text_field :topic, class: 'form-control' %>
+    </div>
+
+    <div class="field form-group">
+      <%= form.label :description %>
+      <%= form.text_field :description, class: 'form-control' %>
+    </div>
+
+    <div class="field form-group">
+      <%= form.label :links %>
+      <%= form.text_field :links, class: 'form-control' %>
+    </div>
+
+    <div class="actions form-actions">
+      <div>
+        <button type="submit" class="btn btn-success form-btn"><%= t('submit') %></button>
+      </div>
+      <div>
+        <%= link_to t('back'), course_path(id: @course), class: 'btn btn-danger form-btn' %>
+      </div>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :topic %>
-    <%= form.text_field :topic %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :links %>
-    <%= form.text_field :links %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

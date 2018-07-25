@@ -1,37 +1,44 @@
-<%= form_with(model: @lesson, url: polymorphic_path([@course, @theme, @lesson]), local: true) do |form| %>
-  <% if @lesson.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
+<div class="form-container">
+  <%= form_with(model: @lesson, url: polymorphic_path([@course, @theme, @lesson]), local: true) do |form| %>
+    <% if @lesson.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
 
-      <ul>
-      <% @lesson.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @lesson.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field form-group">
+      <%= form.label :topic %>
+      <%= form.text_field :topic, class: 'form-control' %>
+    </div>
+
+    <div class="field form-group">
+      <%= form.label :description %>
+      <%= form.text_field :description, class: 'form-control' %>
+    </div>
+
+    <div class="field form-group">
+      <%= form.label :links %>
+      <%= form.text_field :links, class: 'form-control' %>
+    </div>
+
+    <div class="field form-group">
+      <%= form.label :date %>
+      <%= form.date_field Date.today, class: 'form-control' %>
+    </div>
+
+    <div class="actions form-actions">
+      <div>
+        <button type="submit" class="btn btn-success form-btn"><%= t('submit') %></button>
+      </div>
+      <div>
+        <%= link_to t('back'), course_path(id: @course), class: 'btn btn-danger form-btn' %>
+      </div>
     </div>
   <% end %>
- 
-  <div class="field">
-    <%= form.label :topic %>
-    <%= form.text_field :topic %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :links %>
-    <%= form.text_field :links %>
-  </div>
-
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.date_field Date.today %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

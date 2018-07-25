@@ -1,6 +1,4 @@
 <% @title = t('activerecord.models.theme.new') %>
-<h1><%= @title %></h1>
+<h1 class="center"><%= @title %></h1>
 
 <%= render 'form', theme: @theme %>
-
-<%= link_to t('back'), course_path(id: @course) %>

@@ -11,6 +11,7 @@ ua:
   details: 'Детальніше'
   show: 'Показати'
   back: 'Назад'
+  submit: 'Підтвердити'
   menu:
     home: 'Домашня сторінка'
     courses: 'Курси'
@@ -513,4 +514,4 @@ ua:
   helpers:
     submit:
       create: "Створити %{model}"
-      update: "Оновити %{model}"  
+      update: "Оновити %{model}"
