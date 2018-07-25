@@ -3,13 +3,13 @@
 class LessonsController < ApplicationController
   before_action :check_access
   def new
-    @lesson = Lesson.new
+    @lesson = new_lesson_path.new
   end
 
   def create
-    @lesson = Lesson.new(lesson_params)
+    @lesson = new_lesson_path.new(lesson_params)
     if @lesson.save
-      redirect_to course_path(id: @lesson.theme.course_id),
+      redirect_to course_path(id: course.id),
                   notice: t('actions.success.create',
                             resource: lesson_locale)
     else
@@ -18,34 +18,48 @@ class LessonsController < ApplicationController
   end
 
   def edit
+    course
+    theme
     lesson
   end
 
   def update
     if lesson.update(lesson_params)
-      redirect_to course_path(id: @lesson.theme.course_id),
+      redirect_to course_path(id: course.id),
                   notice: t('actions.success.update',
                             resource: lesson_locale)
     else
-      render :edit
+      render :edit, course: course, theme: theme
     end
   end
 
   def destroy
     lesson.destroy
-    redirect_to course_path(id: @lesson.theme.course_id),
+    redirect_to course_path(id: course.id),
                 notice: t('actions.success.destroy',
                           resource: lesson_locale)
   end
 
   private
 
+  def course
+    @course ||= Course.find(params[:course_id])
+  end
+
+  def new_lesson_path
+    course.themes.find(theme.id).lessons
+  end
+
+  def theme
+    @theme ||= Theme.find(params[:theme_id])
+  end
+
   def lesson
-    @lesson = Lesson.find(params[:id])
+    @lesson ||= Lesson.find(params[:id])
   end
 
   def lesson_params
-    params.require(:lesson).permit(:topic, :description, :links, :date, :theme_id)
+    params.require(:lesson).permit(:topic, :description, :links, :date)
   end
 
   def lesson_locale

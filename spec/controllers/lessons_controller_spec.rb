@@ -6,21 +6,22 @@ RSpec.describe LessonsController, type: :controller do
   # Helpers definition
   let(:other_role) { FactoryBot.create(:valid_user_for_mentor_role) }
 
-  let(:student) { FactoryBot.create(:valid_user_with_group) }
+  let(:student) { course.group.users.first }
   let(:teacher) { course.user }
-  let(:course) { hometask.lesson.theme.course }
+  let(:course) { theme.course }
+  let(:theme) { hometask.lesson.theme }
   let(:hometask) { FactoryBot.create(:valid_hometask_with_all_optional) }
-  # let(:lesson) { FactoryBot.create(:valid_lesson_with_all_optional) }
+
   describe 'GET #new' do
     render_views
     it 'render lessons/new template with teacher role' do
       login_with teacher
-      get :new
+      get :new, params: { course_id: course.id, theme_id: theme.id }
       expect(response).to render_template('lessons/new')
     end
     it 'redirects to root if user is not a teacher' do
       login_with student
-      get :new
+      get :new, params: { course_id: course.id, theme_id: theme.id }
       expect(response).to redirect_to root_path
     end
   end
@@ -29,12 +30,12 @@ RSpec.describe LessonsController, type: :controller do
     render_views
     it 'render lessons/edit template with teacher role' do
       login_with teacher
-      get :edit, params: { id: hometask.lesson.id }
+      get :edit, params: { course_id: course.id, theme_id: theme.id, id: hometask.lesson.id }
       expect(response).to render_template('lessons/edit')
     end
     it 'redirects to root if user is not a teacher' do
       login_with other_role
-      get :edit, params: { id: hometask.lesson.id }
+      get :edit, params: { course_id: course.id, theme_id: theme.id, id: hometask.lesson.id }
       expect(response).to redirect_to root_path
     end
   end
@@ -43,17 +44,42 @@ RSpec.describe LessonsController, type: :controller do
     render_views
     it 'redirects to lessons path if hometask has valid parameters' do
       login_with teacher
-      post :create, params: { lesson: { topic: 'valid_topic', theme_id: hometask.lesson.theme_id } }
+      params = {
+        course_id: course.id,
+        theme_id: theme.id,
+        lesson: {
+          topic: 'valid_topic',
+          theme_id: hometask.lesson.theme_id
+        }
+      }
+      post :create, params: params
       expect(response).to redirect_to course_path(id: course.id)
     end
     it 'redirects to root if user is not a teacher' do
       login_with other_role
-      post :create, params: { lesson: { topic: 'valid_topic', theme_id: hometask.lesson.theme_id } }
+      params = {
+        course_id: course.id,
+        theme_id: theme.id,
+        lesson: {
+          topic: 'valid_topic',
+          theme_id: hometask.lesson.theme_id
+        }
+      }
+      post :create, params: params
       expect(response).to redirect_to root_path
     end
+
     it 'render lessons/new if lesson has invalid parameters' do
       login_with teacher
-      post :create, params: { lesson: { topic: 'inv', theme_id: hometask.lesson.theme_id } }
+      params = {
+        course_id: course.id,
+        theme_id: theme.id,
+        lesson: {
+          topic: 'inv',
+          theme_id: hometask.lesson.theme_id
+        }
+      }
+      post :create, params: params
       expect(response).to render_template('lessons/new')
     end
   end
@@ -62,17 +88,41 @@ RSpec.describe LessonsController, type: :controller do
     render_views
     it 'updates lesson with valid parameters' do
       login_with teacher
-      put :update, params: { id: hometask.lesson.id, lesson: { topic: 'new_topic' } }
+      params = {
+        course_id: course.id,
+        theme_id: theme.id,
+        id: hometask.lesson.id,
+        lesson: {
+          topic: 'new_topic'
+        }
+      }
+      put :update, params: params
       expect(Lesson.find(hometask.lesson.id).topic).to eq('new_topic')
     end
     it 'does not update lesson with invalid parameters' do
       login_with teacher
-      put :update, params: { id: hometask.lesson.id, lesson: { topic: 'va' } }
+      params = {
+        course_id: course.id,
+        theme_id: theme.id,
+        id: hometask.lesson.id,
+        lesson: {
+          topic: 'va'
+        }
+      }
+      put :update, params: params
       expect(Lesson.find(hometask.lesson.id).topic).not_to eq('va')
     end
     it 'redirects to root if user is not a teacher' do
       login_with other_role
-      put :update, params: { id: hometask.lesson.id, lesson: { topic: 'new_topic' } }
+      params = {
+        course_id: course.id,
+        theme_id: theme.id, id:
+        hometask.lesson.id,
+        lesson: {
+          topic: 'new_topic'
+        }
+      }
+      put :update, params: params
       expect(response).to redirect_to root_path
     end
   end
@@ -81,12 +131,12 @@ RSpec.describe LessonsController, type: :controller do
     render_views
     it 'destroys lesson with valid parameters' do
       login_with teacher
-      delete :destroy, params: { id: hometask.lesson.id }
+      delete :destroy, params: { course_id: course.id, theme_id: theme.id, id: hometask.lesson.id }
       expect(response).to redirect_to course_path(id: course.id)
     end
     it 'redirects to root if user is not a teacher' do
       login_with other_role
-      delete :destroy, params: { id: hometask.lesson.id }
+      delete :destroy, params: { course_id: course.id, theme_id: theme.id, id: hometask.lesson.id }
       expect(response).to redirect_to root_path
     end
   end

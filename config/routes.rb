@@ -15,10 +15,10 @@ Rails.application.routes.draw do
   resources :subjects, only: %i[index]
 
   resources :courses, only: %i[index show] do
-    resources :themes, except: %i[index show]
+    resources :themes, except: %i[index show] do
+      resources :lessons, except: %i[index show]
+    end
   end
-
-  resources :lessons, except: %i[index show]
 
   resources :hometasks
 
