@@ -11,6 +11,7 @@ RSpec.describe ThemesController, type: :controller do
   let(:group) { student.group }
   let(:course) { FactoryBot.create(:valid_course_with_displayed, group_id: student.group_id) }
   let(:theme) { FactoryBot.create(:valid_theme, course: course) }
+  let(:params) { { use_route: "courses/#{course}/themes/", course_id: course.id } }
 
   describe 'GET new' do
     it 'redner themes/new template with teacher role' do
