@@ -168,6 +168,8 @@ ua:
       theme:
         topic: Назва
         course: Курс
+        description: Опис
+        links: Посилання
       user:
         confirmation_sent_at: "Підтвердження вислано в"
         confirmation_token: "Код підтвердження"

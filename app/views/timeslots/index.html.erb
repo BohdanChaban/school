@@ -19,13 +19,21 @@
 
           <tbody> 
             <% @timeslots.each_with_index do |timeslot, index| %>
+              <% index_f = index.next %>
               <tr>
                 <td scope="row"> <%= timeslot %> </td> 
                 <td>
-                  <%= t("subjects.#{timetable_by_day[index][:subject].name}") if timetable_by_day[index] %>  
+                  <% if timetable_by_day[index_f] %>
+                    <% if current_user.student? %>
+                      <%= t("subjects.#{timetable_by_day[index_f][:subject].name}") %>
+                    <% else %>
+                      <% group = timetable_by_day[index_f][:group] %>  
+                      <%= "#{group.number}-#{group.parallel}"%>
+                    <% end %>
+                  <% end %>
                 </td>
                 <td> 
-                 <%= timetable_by_day[index][:hometask] if timetable_by_day[index] %> 
+                 <%= timetable_by_day[index_f][:hometask].description if timetable_by_day[index_f] %> 
                 </td> 
               </tr>
             <% end %> 
