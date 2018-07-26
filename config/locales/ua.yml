@@ -216,8 +216,8 @@ ua:
         lesson:
           attributes:
             topic:
-              blank: 'не може бути пустою'
-              too_short: 'надто коротка'
+              blank: 'не може бути пустим'
+              too_short: 'надто короткий'
   devise:
     confirmations:
       confirmed: "Ваш обліковий запис підтверджено. Ви увійшли в систему."
