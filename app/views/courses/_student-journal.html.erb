@@ -8,7 +8,7 @@
             <%= t('activerecord.models.theme.other') %>
           </th>
           <% @course.themes.order(:id).each do |theme| %>
-            <th colspan="<%= theme.lessons.count * 2 + 1 %>">
+            <th colspan="<%= theme.lessons.count * 2 %>">
               <%= theme.id %>
             </th>
           <% end %>
@@ -24,7 +24,6 @@
               </th>
             <% end %>
           <% end %>
-          <th></th>
         </tr>
       </thead>
 
@@ -44,9 +43,7 @@
                 <%= 'н' if ach && !ach[:attendance] %>
               </td>
             <% end %>
-            <td class="center"></td>
           <% end %>
-          <td></td>
         </tr>
       </tbody>
     </table>
