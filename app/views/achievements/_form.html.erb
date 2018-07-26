@@ -15,7 +15,7 @@
     <%= form.label :point %>
     <%= form.select :points do %>
       <% points = Achievement::POINTS_RANGE.map { |point| [point, point] } %>
-      <%= options_for_select(points) %> 
+      <%= options_for_select(points) %>
     <% end %>
   </div>
 
@@ -23,11 +23,11 @@
     <%= form.label :kind %>
     <%= form.select :kind do %>
       <% kinds = Achievement::KINDS.map do |kind_elem| %>
-        <% text = t("kinds.#{kind_elem}") %>
+        <% text = t("activerecord.attributes.achievement.kinds.#{kind_elem}") %>
         <% value = kind_elem %>
         <% [text, value ] %>
       <% end %>
-      <%= options_for_select(kinds) %> 
+      <%= options_for_select(kinds) %>
     <% end %>
   </div>
 
@@ -39,7 +39,7 @@
         <% value = lesson.id %>
         <% [text, value ] %>
       <% end %>
-      <%= options_for_select(lessons) %> 
+      <%= options_for_select(lessons) %>
     <% end %>
   </div>
 
@@ -51,7 +51,7 @@
         <% value = student.id %>
         <% [text, value ] %>
       <% end %>
-      <%= options_for_select(lessons) %> 
+      <%= options_for_select(lessons) %>
     <% end %>
   </div>
 

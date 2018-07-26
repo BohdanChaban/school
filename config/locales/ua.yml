@@ -66,6 +66,9 @@ ua:
       achievement:
         one:  Успішність
         other: Успішності
+        new: Нова успішність
+        edit: Редагування успішності
+        add: Додати успішність
       admin: Адміністратор
       article:
         one:  Стаття
@@ -113,6 +116,12 @@ ua:
         user: Студент
         created_at: Створено
         updated_at: Змінено
+        kinds:
+          normal: "Звичайна"
+          notebook: "В щоденнику"
+          thematic: "Тематична"
+          semester: "Семестрова"
+          year: "Річна"
       admin:
         confirmed_at: "Підтверджено"
         created_at: "Створено"
