@@ -200,6 +200,13 @@ ua:
         unlock_token: "Токен розблокування"
         updated_at: "Змінений"
         signed_up_but_not_approved: 'Ви успішно зареєструвалися, але ваш обліковий запис ще не схвалено адміністратором'
+    errors:
+      models:
+        theme:
+          attributes:
+            topic:
+              blank: 'не може бути пустою'
+              too_short: 'надто коротка'
   devise:
     confirmations:
       confirmed: "Ваш обліковий запис підтверджено. Ви увійшли в систему."
