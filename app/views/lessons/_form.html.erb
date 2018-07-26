@@ -29,7 +29,14 @@
 
     <div class="field form-group">
       <%= form.label :date %>
-      <%= form.date_field Date.today, class: 'form-control' %>
+      <%= form.date_select :date, 
+                          {
+                            start_year: Date.today.year, 
+                            end_year: Date.today.year.next, 
+                            order: [:day, :month, :year] 
+                          }, 
+                          {class: 'form-control'} 
+      %>
     </div>
 
     <div class="actions form-actions">
