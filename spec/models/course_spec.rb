@@ -57,4 +57,22 @@ RSpec.describe Course, type: :model do
     expect(course).to be_valid
     expect(course.achievements_hash).to eq({})
   end
+
+  it 'is valid with not empty achievements_hash' do
+    user = FactoryBot.create(:valid_user_for_registration)
+    course = FactoryBot.create(:valid_course)
+    theme = FactoryBot.create(:valid_theme, course: course)
+    lesson = FactoryBot.create(:valid_lesson_with_all_optional, theme: theme)
+    ach = FactoryBot.create(:valid_achievement, lesson: lesson, user: user)
+
+    course_achievements = course.achievements_hash
+    lesson_achievements = course_achievements[lesson.id]
+    achievement_details = lesson_achievements[ach.user.id]
+
+    expect(course).to be_valid
+    expect(ach).to be_valid
+    expect(course_achievements).to_not be_empty
+    expect(lesson_achievements).to_not be_empty
+    expect(achievement_details).to eq(points: ach.points, type: ach.kind, attendance: ach.attendance)
+  end
 end
