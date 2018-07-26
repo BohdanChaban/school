@@ -207,6 +207,11 @@ ua:
             topic:
               blank: 'не може бути пустою'
               too_short: 'надто коротка'
+        hometask:
+          attributes:
+            description:
+              blank: 'не може бути пустою'
+              too_short: 'надто коротка'
   devise:
     confirmations:
       confirmed: "Ваш обліковий запис підтверджено. Ви увійшли в систему."
