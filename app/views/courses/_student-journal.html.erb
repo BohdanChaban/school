@@ -1,0 +1,54 @@
+<div id="table-scroll" class="table-scroll">
+  <div class="table-wrap">
+    <table class="table table-hover table-bordered journal-table">
+    <!--<table class="table table-hover table-bordered journal-table">-->
+      <thead class="journal-thead">
+        <tr>
+          <th class="topic fixed">
+            <%= t('activerecord.models.theme.other') %>
+          </th>
+          <% @course.themes.order(:id).each do |theme| %>
+            <th colspan="<%= theme.lessons.count * 2 + 1 %>">
+              <%= theme.id %>
+            </th>
+          <% end %>
+        </tr>
+        <tr>
+          <th class="topic fixed">
+            <%= t('activerecord.models.lesson.other') %>
+          </th>
+          <% @course.themes.each do |theme| %>
+            <% theme.lessons.each do |lesson| %>
+              <th colspan="2">
+                <%= lesson.date ? lesson.date.strftime("%e.%m") : '--.--' %>
+              </th>
+            <% end %>
+          <% end %>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% student = current_user %>
+        <tr class="student-row">
+          <td class="student-name fixed">
+            <%= "#{student.surname}" %> <%= "#{student.name}" %>
+          </td>
+          <% @course.themes.each do |theme| %>
+            <% theme.lessons.each do |lesson| %>
+              <% ach = @course.achievements_hash[lesson.id][student.id] %>
+              <td class="points center <%= ach[:type] if ach %>">
+                <%= ach[:points] if ach %>
+              </td>
+              <td class="attendance center">
+                <%= 'н' if ach && !ach[:attendance] %>
+              </td>
+            <% end %>
+            <td class="center"></td>
+          <% end %>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -7,7 +7,7 @@
           <th class="topic fixed">
             <%= t('activerecord.models.theme.other') %>
           </th>
-          <% @course.themes.each do |theme| %>
+          <% @course.themes.order(:id).each do |theme| %>
             <th colspan="<%= theme.lessons.count * 2 + 1 %>">
               <%= link_to theme.id, edit_course_theme_path(id: theme, course_id: @course) %>
             </th>
@@ -60,10 +60,3 @@
     </table>
   </div>
 </div>
-
-<script>
-  $(document).ready(function() {
-      $(".journal-table").clone(true).appendTo('#table-scroll').addClass('clone');
-      $(".clone").removeClass('table-bordered')
-  });
-</script>
