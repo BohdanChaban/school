@@ -4,6 +4,7 @@ ua:
       create: "%{resource} успішно створено."
       update: "%{resource} успішно обновлено."
       destroy: "%{resource} успішно видалено."
+  all_rights_reserved: 'Всі права захищено'
   title: 'Школа'
   news: 'Новини школи'
   topic: 'Розділ'

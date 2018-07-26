@@ -7,6 +7,7 @@ en:
       create: "%{resource} was successfully created."
       update: "%{resource} was successfully updated."
       destroy: "%{resource} was successfully destroyed."
+  all_rights_reserved: 'All rights reserved'
   title: 'School'
   news: 'School news'
   topic: 'Topic'

@@ -1,3 +1,13 @@
 // Place all the styles related to the lesson controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.lesson-date-group div {
+  margin: auto;
+  text-align: center;
+}
+
+.lesson-date-group select {
+  display: inline-block;
+  width: 33%;
+}

@@ -27,16 +27,18 @@
       <%= form.text_field :links, class: 'form-control' %>
     </div>
 
-    <div class="field form-group">
+    <div class="field form-group lesson-date-group">
       <%= form.label :date %>
-      <%= form.date_select :date, 
-                          {
-                            start_year: Date.today.year, 
-                            end_year: Date.today.year.next, 
-                            order: [:day, :month, :year] 
-                          }, 
-                          {class: 'form-control'} 
-      %>
+      <div>
+        <%= form.date_select :date,
+                                {
+                                    start_year: Date.today.year,
+                                    end_year: Date.today.year.next,
+                                    order: [:day, :month, :year]
+                                },
+                                {class: 'form-control'}
+        %>
+      </div>
     </div>
 
     <div class="actions form-actions">
