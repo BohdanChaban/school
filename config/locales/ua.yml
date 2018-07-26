@@ -153,6 +153,7 @@ ua:
       hometask:
         description: Опис
         link: Посилання
+        lesson: Урок
         lesson_id: Урок
         created_at: Створено
         updated_at: Змінено
