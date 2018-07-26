@@ -298,6 +298,7 @@ ua:
       already_signed_out: "Успішний вихід з системи."
       new:
         sign_in: "Увійти"
+        remember_me: "Запам'ятати мене"
       signed_in: "Ви увійшли в систему."
       signed_out: "Успішний вихід з системи."
     shared:
