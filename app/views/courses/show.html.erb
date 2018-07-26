@@ -2,6 +2,6 @@
 
 <%= render 'teacher-journal' if current_user.teacher? %>
 
-<%= render 'students' if current_user.student? %>
+<%= render 'student-journal' if current_user.student? %>
 
 <%= link_to t(:back), courses_path, class: 'btn btn-info back-btn' %>
