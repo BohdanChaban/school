@@ -133,4 +133,13 @@ RailsAdmin.config do |config|
       field :course
     end
   end
+
+  # Lesson model fields configuration
+  config.model 'Lesson' do
+    edit do
+      configure :date, :date do
+        date_format :default
+      end
+    end
+  end
 end
