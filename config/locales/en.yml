@@ -16,6 +16,7 @@ en:
   show: 'Show'
   back: 'Back'
   submit: 'Submit'
+  about_info: 'This section will contain additional information about the school.'
   menu:
     home: 'Home'
     courses: 'Cources'

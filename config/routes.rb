@@ -25,4 +25,6 @@ Rails.application.routes.draw do
   resources :timeslots, only: %i[index]
 
   resources :achievements, except: %i[index show]
+
+  resources :about, only: %i[index]
 end
