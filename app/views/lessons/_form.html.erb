@@ -41,6 +41,39 @@
       </div>
     </div>
 
+    <%if @lesson.id %>
+      <table class="table table-hover table-bordered journal-table">
+        <thead class="journal-thead">
+          <tr>
+            <th> <%= t('activerecord.attributes.achievement.user') %> </th>
+            <th> <%= t('activerecord.attributes.achievement.point') %> </th>
+            <th> <%= t('activerecord.attributes.achievement.attendance') %></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @course.group.users.each do |student| %>
+            <tr class="student-row">
+              <td class="student-name fixed">
+                <%= "#{student.surname}" %> <%= "#{student.name}" %>
+              </td> 
+              <% ach = @course.achievements_hash[@lesson.id][student.id] %>
+              <td class="points center <%= ach[:type] if ach %>">
+                <% if ach %>
+                  <%= ach[:points]%>
+                <% else %>
+                  <%= link_to '+', new_achievement_path(achievement: { student: student, lesson: @lesson }) %>
+                <% end %>
+              </td>
+              <td class="attendance center">
+                <%= 'н' if ach && !ach[:attendance] %>
+              </td>  
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+
     <div class="actions form-actions">
       <div>
         <button type="submit" class="btn btn-success form-btn"><%= t('submit') %></button>
