@@ -32,34 +32,12 @@
   </div>
 
   <div class="field">
-    <%= form.label :lesson %>
-    <%= form.select :lesson_id do %>
-      <% lessons = Lesson.all.map do |lesson| %>
-        <% text = "#{lesson.topic}" %>
-        <% value = lesson.id %>
-        <% [text, value ] %>
-      <% end %>
-      <%= options_for_select(lessons) %>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user %>
-    <%= form.select :user_id do %>
-      <% lessons = User.where(role: 'student').map do |student| %>
-        <% text = "#{student.name} #{student.surname}" %>
-        <% value = student.id %>
-        <% [text, value ] %>
-      <% end %>
-      <%= options_for_select(lessons) %>
-    <% end %>
-  </div>
-
-  <div class="field">
     <%= form.label :attendance %>
     <%= form.check_box :attendance %>
   </div>
 
+  <%= form.hidden_field :lesson_id, value: lesson %>
+  <%= form.hidden_field :user_id, value: student %>
 
   <div class="actions">
     <%= form.submit %>

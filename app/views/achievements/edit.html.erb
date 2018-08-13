@@ -1,4 +1,4 @@
 <h1> <%= t('activerecord.models.achievement.edit')%></h1>
 
-<%= render 'form', achievement: @achievement %>
+<%= render 'form', achievement: @achievement, lesson: params[:achievement][:lesson], student: params[:achievement][:student]  %>
 

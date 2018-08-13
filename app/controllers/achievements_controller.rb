@@ -14,7 +14,8 @@ class AchievementsController < ApplicationController
   def create
     @achievement = Achievement.new(achievement_params)
     if @achievement.save
-      redirect_to root_path, notice: t('actions.success.create', resource: achievement_locale)
+      redirect_to edit_course_theme_lesson_url(lesson_params),
+                  notice: t('actions.success.create', resource: achievement_locale)
     else
       render :new
     end
@@ -45,6 +46,11 @@ class AchievementsController < ApplicationController
 
   def achievement
     @achievement = Achievement.find(params[:id])
+  end
+
+  def lesson_params
+    lesson = Lesson.find(achievement_params[:lesson_id])
+    { id: lesson.id, course_id: lesson.theme.course_id, theme_id: lesson.theme_id }
   end
 
   def achievement_params
