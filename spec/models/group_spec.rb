@@ -14,12 +14,12 @@ RSpec.describe Group, type: :model do
   let(:inclusion_parallels)     { %w[a b c] }
 
   # Errors definition
-  let(:short_error_number)    { 'is too short (minimum is 1 character)' }
-  let(:long_error_number)     { 'is too long (maximum is 2 characters)' }
-  let(:length_error_parallel) { 'is the wrong length (should be 1 character)' }
-  let(:invalid_error)         { 'is invalid' }
-  let(:blank_error)           { 'can\'t be blank' }
-  let(:included_error)        { 'is not included in the list' }
+  let(:short_error_number)    { I18n.t('activerecord.errors.models.group.attributes.number.too_short') }
+  let(:long_error_number)     { I18n.t('activerecord.errors.models.group.attributes.number.too_long') }
+  let(:length_error_parallel) { I18n.t('activerecord.errors.models.group.attributes.parallel.wrong_length') }
+  let(:invalid_error)         { I18n.t('activerecord.errors.models.group.attributes.parallel.invalid') }
+  let(:blank_error)           { I18n.t('activerecord.errors.models.group.attributes.number.blank') }
+  let(:included_error)        { I18n.t('activerecord.errors.models.group.attributes.number.inclusion') }
 
   it 'is valid with valid attributes' do
     group = FactoryBot.build(:valid_group)

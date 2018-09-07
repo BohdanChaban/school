@@ -17,8 +17,8 @@ RSpec.describe Article, type: :model do
   let(:long_text)     { 'f' * 41 }
 
   # Errors definition
-  let(:short_error)   { 'is too short (minimum is 5 characters)' }
-  let(:long_error)    { 'is too long (maximum is 40 characters)' }
+  let(:short_error)   { I18n.t('activerecord.errors.models.article.attributes.topic.too_short') }
+  let(:long_error)    { I18n.t('activerecord.errors.models.article.attributes.topic.too_long') }
 
   it 'is valid with valid attributes' do
     expect(article).to be_valid

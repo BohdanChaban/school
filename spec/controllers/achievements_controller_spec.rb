@@ -42,7 +42,7 @@ RSpec.describe AchievementsController, type: :controller do
   end
 
   describe 'POST create' do
-    it ' seccuss notice after create achievement with valid params' do
+    it ' success notice after create achievement with valid params' do
       login_with teacher
       achievement_params = {
         lesson_id: lesson.id,
@@ -52,7 +52,7 @@ RSpec.describe AchievementsController, type: :controller do
         kind: valid_kind
       }
       post :create, params: { achievement: achievement_params }
-      expect(controller.notice).to eq('Achievement was successfully created.')
+      expect(controller.notice).to eq(I18n.t('actions.success.create', resource: I18n.t('activerecord.models.achievement.one')))
     end
 
     it 'redner achievements/new template after create achievement without valid params' do

@@ -7,9 +7,9 @@ RSpec.describe Hometask, type: :model do
   let(:short_text)    { 'f' * 2 }
 
   # Errors definition
-  let(:short_error)   { 'is too short (minimum is 3 characters)' }
-  let(:blank_error) { 'can\'t be blank' }
-  let(:exist_error) { 'must exist' }
+  let(:short_error)   { I18n.t('activerecord.errors.models.hometask.attributes.description.too_short') }
+  let(:blank_error) { I18n.t('activerecord.errors.models.hometask.attributes.description.blank') }
+  let(:exist_error) { I18n.t('activerecord.errors.models.hometask.attributes.lesson.required') }
   let(:empty) { '' }
 
   it 'is valid with valid attributes' do

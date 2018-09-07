@@ -9,10 +9,10 @@ RSpec.describe Theme, type: :model do
   let(:empty)      { '' }
 
   # Errors definition
-  let(:short_error_topic)   { 'is too short (minimum is 5 characters)' }
-  let(:long_error_topic)    { 'is too long (maximum is 40 characters)' }
-  let(:invalid_error)      { 'is invalid' }
-  let(:blank_error)        { 'can\'t be blank' }
+  let(:short_error_topic)   { I18n.t('activerecord.errors.models.theme.attributes.topic.too_short') }
+  let(:long_error_topic)    { I18n.t('activerecord.errors.models.theme.attributes.topic.too_long') }
+  let(:invalid_error)      { I18n.t('activerecord.errors.models.theme.attributes.topic.invalid') }
+  let(:blank_error)        { I18n.t('activerecord.errors.models.theme.attributes.topic.blank') }
 
   it 'is valid with valid attributes' do
     theme = FactoryBot.create(:with_all_optional)

@@ -8,12 +8,12 @@ RSpec.describe Achievement, type: :model do
   let(:invalid_points_length)   { 133 }
 
   # Errors definition
-  let(:short_error) { 'is too short (minimum is 1 character)' }
-  let(:long_error) { 'is too long (maximum is 2 characters)' }
+  let(:short_error) { I18n.t('activerecord.errors.models.achievement.attributes.points.too_short') }
+  let(:long_error) { I18n.t('activerecord.errors.models.achievement.attributes.points.too_long') }
   let(:blank_error) { 'can\'t be blank' }
   let(:exist_error) { 'must exist' }
   let(:empty) { '' }
-  let(:included_error) { 'is not included in the list' }
+  let(:included_error) { I18n.t('activerecord.errors.models.achievement.attributes.points.inclusion') }
   let(:inclusion_kind) { %w[normal notebook thematic semester year] }
 
   it 'is valid with valid attributes' do

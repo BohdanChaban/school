@@ -8,10 +8,10 @@ RSpec.describe Lesson, type: :model do
   let(:long_text)     { 'f' * 41 }
 
   # Errors definition
-  let(:short_error)   { 'is too short (minimum is 5 characters)' }
-  let(:long_error)    { 'is too long (maximum is 40 characters)' }
-  let(:blank_error) { 'can\'t be blank' }
-  let(:exist_error) { 'must exist' }
+  let(:short_error)   { I18n.t('activerecord.errors.models.lesson.attributes.topic.too_short') }
+  let(:long_error)    { I18n.t('activerecord.errors.models.lesson.attributes.topic.too_long') }
+  let(:blank_error) { I18n.t('activerecord.errors.models.lesson.attributes.topic.blank') }
+  let(:exist_error) { I18n.t('activerecord.errors.models.lesson.attributes.theme.required') }
   let(:empty) { '' }
   it 'is valid with valid attributes' do
     lesson = FactoryBot.create(:valid_lesson_with_all_optional)

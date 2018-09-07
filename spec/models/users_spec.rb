@@ -18,13 +18,13 @@ RSpec.describe User, type: :model do
   let(:default_approved)    { false }
 
   # Errors definition
-  let(:short_error_name)   { 'is too short (minimum is 2 characters)' }
-  let(:long_error_name)    { 'is too long (maximum is 30 characters)' }
-  let(:short_error_email)  { 'is too short (minimum is 6 characters)' }
-  let(:long_error_email)   { 'is too long (maximum is 40 characters)' }
-  let(:unique_error_email) { 'has already been taken' }
-  let(:invalid_error)      { 'is invalid' }
-  let(:blank_error)        { 'can\'t be blank' }
+  let(:short_error_name)   { I18n.t('activerecord.errors.models.user.attributes.name.too_short') }
+  let(:long_error_name)    { I18n.t('activerecord.errors.models.user.attributes.name.too_long') }
+  let(:short_error_email)  { I18n.t('activerecord.errors.models.user.attributes.email.too_short') }
+  let(:long_error_email)   { I18n.t('activerecord.errors.models.user.attributes.email.too_long') }
+  let(:unique_error_email) { I18n.t('activerecord.errors.models.user.attributes.email.taken') }
+  let(:invalid_error)      { I18n.t('activerecord.errors.models.user.attributes.email.invalid') }
+  let(:blank_error)        { I18n.t('activerecord.errors.models.user.attributes.email.blank') }
   let(:confirmation_error) { 'doesn\'t match Password' }
 
   it 'is valid with valid attributes' do
