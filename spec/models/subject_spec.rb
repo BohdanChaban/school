@@ -12,10 +12,10 @@ RSpec.describe Subject, type: :model do
   let(:with_number) { 'as_dsd2' }
 
   # Errors definition
-  let(:short_error)   { 'is too short (minimum is 3 characters)' }
-  let(:long_error)    { 'is too long (maximum is 30 characters)' }
+  let(:short_error)   { I18n.t('activerecord.errors.models.subject.attributes.name.too_short') }
+  let(:long_error)    { I18n.t('activerecord.errors.models.subject.attributes.name.too_long') }
   let(:name_format_error) { 'Only a-z letters and _ symbol allowed' }
-  let(:blank_error) { 'can\'t be blank' }
+  let(:blank_error) { I18n.t('activerecord.errors.models.subject.attributes.name.blank') }
 
   it 'is valid with valid attributes' do
     subject = FactoryBot.create(:valid_subject)

@@ -214,21 +214,78 @@ ua:
         signed_up_but_not_approved: 'Ви успішно зареєструвалися, але ваш обліковий запис ще не схвалено адміністратором'
     errors:
       models:
-        theme:
+        achievement:
+          attributes:
+            points:
+              inclusion: 'не входить до списку'
+              too_long: 'максимум 2 символи'
+              too_short: 'мінімум 1 символ'
+        article:
           attributes:
             topic:
-              blank: 'не може бути пустою'
+              blank: 'не може бути пустим'
               too_short: 'надто коротка'
+              too_long: 'занадто довга'
         hometask:
           attributes:
             description:
               blank: 'не може бути пустою'
               too_short: 'надто коротка'
+            lesson:
+              required: 'повинен існувати'
+        group:
+          attributes:
+            parallel:
+              blank: 'не може бути пустим'
+              wrong_length: 'неправильної довжини'
+              inclusion: 'не входить до списку'
+              invalid: 'некоректна'
+            number:
+              blank: 'не може бути пустим'
+              too_short: 'надто короткий'
+              too_long: 'занадто довгий'
+              inclusion: 'не входить до списку'
         lesson:
           attributes:
+            theme:
+              required: 'повинна існувати'
             topic:
               blank: 'не може бути пустим'
               too_short: 'надто короткий'
+              too_long: 'занадто довгий'
+        subject:
+          attributes:
+            name:
+              blank: 'не може бути пустим'
+              too_short: 'надто коротка'
+              too_long: 'занадто довга'
+            image:
+              blank: 'не може бути пустим'
+        theme:
+          attributes:
+            topic:
+              blank: 'не може бути пустою'
+              too_short: 'надто коротка'
+              too_long: 'занадто довга'
+              invalid: 'некоректна'
+        user:
+          attributes:
+            email:
+              blank: 'не може бути пустим'
+              taken: 'вже використано'
+              too_long: 'занадто довгий (максимум 40 знаків)'
+              too_short: 'надто короткий (мінімум 6 знаків)'
+              invalid: 'некоректний'
+            name:
+              blank: 'не може бути пустим'
+              too_long: 'занадто довге (максимум 30 знаків)'
+              too_short: 'надто коротке (мінімум 2 знаків)'
+            surname:
+              blank: 'не може бути пустим'
+              too_long: 'занадто довге (максимум 30 знаків)'
+              too_short: 'надто коротке (мінімум 2 знаків)'
+            password:
+              blank: 'не може бути пустим'
   devise:
     confirmations:
       confirmed: "Ваш обліковий запис підтверджено. Ви увійшли в систему."
