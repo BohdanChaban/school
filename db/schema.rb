@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180719100156) do
+ActiveRecord::Schema.define(version: 20180910092308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,9 @@ ActiveRecord::Schema.define(version: 20180719100156) do
     t.bigint "user_id"
     t.bigint "lesson_id"
     t.integer "kind", default: 0, null: false
+    t.bigint "theme_id"
     t.index ["lesson_id"], name: "index_achievements_on_lesson_id"
+    t.index ["theme_id"], name: "index_achievements_on_theme_id"
     t.index ["user_id"], name: "index_achievements_on_user_id"
   end
 
@@ -137,6 +139,7 @@ ActiveRecord::Schema.define(version: 20180719100156) do
   end
 
   add_foreign_key "achievements", "lessons"
+  add_foreign_key "achievements", "themes"
   add_foreign_key "achievements", "users"
   add_foreign_key "hometasks", "lessons"
   add_foreign_key "lessons", "themes"

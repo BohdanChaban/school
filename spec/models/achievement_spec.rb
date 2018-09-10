@@ -10,11 +10,9 @@ RSpec.describe Achievement, type: :model do
   # Errors definition
   let(:short_error) { I18n.t('activerecord.errors.models.achievement.attributes.points.too_short') }
   let(:long_error) { I18n.t('activerecord.errors.models.achievement.attributes.points.too_long') }
-  let(:blank_error) { 'can\'t be blank' }
-  let(:exist_error) { 'must exist' }
   let(:empty) { '' }
   let(:included_error) { I18n.t('activerecord.errors.models.achievement.attributes.points.inclusion') }
-  let(:inclusion_kind) { %w[normal notebook thematic semester year] }
+  let(:inclusion_kind) { Achievement::KINDS }
 
   it 'is valid with valid attributes' do
     achievement = FactoryBot.build(:valid_achievement)

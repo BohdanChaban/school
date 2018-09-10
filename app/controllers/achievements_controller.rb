@@ -14,6 +14,7 @@ class AchievementsController < ApplicationController
   def create
     @achievement = Achievement.new(achievement_params)
     if @achievement.save
+      update_thematic_achievements
       redirect_to edit_course_theme_lesson_url(lesson_params),
                   notice: t('actions.success.create', resource: achievement_locale)
     else
@@ -55,5 +56,21 @@ class AchievementsController < ApplicationController
 
   def achievement_params
     params.require(:achievement).permit(:lesson_id, :user_id, :points, :attendance, :kind)
+  end
+
+  def update_thematic_achievements
+    theme = @achievement.lesson.theme
+    return unless theme_achievements(theme)
+
+    achievement = Achievement.thematic.find_or_initialize_by(user: @achievement.user, theme: theme)
+    achievement.update(points: average_achievement)
+  end
+
+  def theme_achievements(theme)
+    @theme_achievements ||= Achievement.normal.where(user: @achievement.user, lesson: theme.lessons)
+  end
+
+  def average_achievement
+    (@theme_achievements.sum(:points).to_f / @theme_achievements.count).round
   end
 end

@@ -66,11 +66,11 @@ ua:
   activerecord:
     models:
       achievement:
-        one:  Успішність
-        other: Успішності
-        new: Нова успішність
-        edit: Редагування успішності
-        add: Додати успішність
+        one:  Оцінка
+        other: Оцінки
+        new: Нова оцінка
+        edit: Редагування оцінки
+        add: Додати оцінку
       admin: Адміністратор
       article:
         one:  Стаття
@@ -120,7 +120,7 @@ ua:
         updated_at: Змінено
         kinds:
           normal: "Звичайна"
-          notebook: "В щоденнику"
+          notebook: "Зошит"
           thematic: "Тематична"
           semester: "Семестрова"
           year: "Річна"
@@ -220,6 +220,8 @@ ua:
               inclusion: 'не входить до списку'
               too_long: 'максимум 2 символи'
               too_short: 'мінімум 1 символ'
+            lesson:
+              blank: 'не може бути пустим'
         article:
           attributes:
             topic:
