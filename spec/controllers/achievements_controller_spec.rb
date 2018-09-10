@@ -52,7 +52,8 @@ RSpec.describe AchievementsController, type: :controller do
         kind: valid_kind
       }
       post :create, params: { achievement: achievement_params }
-      expect(controller.notice).to eq(I18n.t('actions.success.create', resource: I18n.t('activerecord.models.achievement.one')))
+      expect(controller.notice).to eq(I18n.t('actions.success.create',
+                                             resource: I18n.t('activerecord.models.achievement.one')))
     end
 
     it 'redner achievements/new template after create achievement without valid params' do
