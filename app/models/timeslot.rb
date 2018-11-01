@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 class Timeslot < ApplicationRecord
-  belongs_to :course
-  DAYS = %w[monday tuesday wednesday thursday friday].freeze
+  DAYS    = %w[monday tuesday wednesday thursday friday].freeze
   NUMBERS = %w[1 2 3 4 5 6 7 8 9].freeze
+  belongs_to :course
 
   validates :number, inclusion: { in: NUMBERS }
   validates :day, inclusion: { in: DAYS }
-  validates :day, uniqueness: { scope: [:number, :group_id] }
+  validates :day, uniqueness: { scope: %i[number group_id] }
   before_validation :set_group_id
 
   enum day: DAYS

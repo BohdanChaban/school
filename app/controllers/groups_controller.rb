@@ -7,7 +7,7 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.find params[:id]
+    @group = Group.find(params[:id])
     redirect_to root_path if current_user.student? && @group.id != current_user.group_id
   end
 end
