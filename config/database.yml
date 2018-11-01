@@ -1,26 +1,24 @@
-
 default: &default
-  host: 'localhost'
-  adapter: postgresql
-  enconding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+  adapter:  postgresql
+  encoding: utf8
+  host:     <%= ENV.fetch('DATABASE_HOST', '127.0.0.1') %>
+  port:     <%= ENV.fetch('DATABASE_PORT', 5432) %>
+  pool:     <%= ENV.fetch('RAILS_MAX_THREADS', 5) %>
+  username: <%= ENV.fetch('DATABASE_USERNAME', 'root') %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
 
 development:
   <<: *default
-  username: school_app
-  password: 12345678
-  database: db/development
+  database: <%= ENV.fetch('DATABASE_NAME') { ENV.fetch('APP_NAME', 'application').dup.concat('_development') } %>
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test
+  database: <%= "#{ENV.fetch('DATABASE_NAME') { ENV.fetch('APP_NAME', 'application') }.dup.concat('_test')}#{ENV['TEST_ENV_NUMBER']}" %>
+
+staging:
+  <<: *default
+  database: <%= ENV.fetch('DATABASE_NAME') { ENV.fetch('APP_NAME', 'application').dup.concat('_staging') } %>
 
 production:
   <<: *default
-  username: school_app
-  password: 12345678
-  database: db/production
+  database: <%= ENV.fetch('DATABASE_NAME') { ENV.fetch('APP_NAME', 'application').dup.concat('_production') } %>

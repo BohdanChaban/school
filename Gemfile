@@ -57,13 +57,14 @@ group :development, :test do
   # ----- NEW
   # gem 'binding_of_caller'
   # gem 'capybara'
-  # gem 'dotenv-rails'
   # gem 'guard-rspec'
   # gem 'parallel_tests'
   # gem 'pry-rails'
 
   # ----- OLD
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+
+  gem 'dotenv-rails'
   gem 'rspec-rails'
 end
 
