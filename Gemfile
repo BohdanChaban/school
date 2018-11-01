@@ -29,8 +29,6 @@ gem 'rails_admin-i18n'
 # === FRONT-END =========================================== #
 
 # ----- NEW
-# gem 'hamlit'
-# gem 'hamlit-rails'
 # gem 'simple_form'
 
 # ----- OLD
@@ -40,6 +38,8 @@ gem 'devise-i18n'
 gem 'i18n'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
+gem 'hamlit'
+gem 'hamlit-rails'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'

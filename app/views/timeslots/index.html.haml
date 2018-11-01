@@ -1,0 +1,32 @@
+- @title = t('activerecord.models.timetable')
+%h1= @title
+- @timeslots = Timeslot::NUMBERS
+.timeslots-wrapper
+  .row
+    - @timetable.each do |day, timetable_by_day|
+      .col-md-6
+        %table.table.table-bordered
+          %thead.thead-dark
+            %tr
+              %th{scope: "col"}
+              %th{scope: "col"}
+                %p
+                  = Date.today
+                = t("days.#{day}")
+              %th{scope: "col"}
+                = t('activerecord.models.hometask.other')
+          %tbody
+            - @timeslots.each_with_index do |timeslot, index|
+              - index_f = index.next
+              %tr
+                %td{scope: "row"}
+                  = timeslot
+                %td
+                  - if timetable_by_day[index_f]
+                    - if current_user.student?
+                      = t("subjects.#{timetable_by_day[index_f][:subject].name}")
+                    - else
+                      - group = timetable_by_day[index_f][:group]
+                      = "#{group.number}-#{group.parallel}"
+                %td
+                  = timetable_by_day[index_f][:hometask][:description] if timetable_by_day[index_f]

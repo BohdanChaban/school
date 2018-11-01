@@ -1,0 +1,31 @@
+#table-scroll.table-scroll
+  .table-wrap
+    %table.table.table-hover.table-bordered.journal-table
+      / <table class="table table-hover table-bordered journal-table">
+      %thead.journal-thead
+        %tr
+          %th.topic.fixed
+            = t('activerecord.models.theme.other')
+          - @course.themes.order(:id).each do |theme|
+            %th{colspan: "#{theme.lessons.count * 2}"}
+              = theme.id
+        %tr
+          %th.topic.fixed
+            = t('activerecord.models.lesson.other')
+          - @course.themes.each do |theme|
+            - theme.lessons.each do |lesson|
+              %th{colspan: "2"}
+                = lesson.date ? lesson.date.strftime("%e.%m") : '--.--'
+      %tbody
+        - student = current_user
+        %tr.student-row
+          %td.student-name.fixed
+            = "#{student.surname}"
+            = "#{student.name}"
+          - @course.themes.each do |theme|
+            - theme.lessons.each do |lesson|
+              - ach = @course.achievements_hash[lesson.id][student.id]
+              %td{class: "points center #{ach[:type] if ach}"}
+                = ach[:points] if ach
+              %td.attendance.center
+                = 'н' if ach && !ach[:attendance]

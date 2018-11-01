@@ -1,0 +1,58 @@
+.form-container
+  = form_with(model: @lesson, url: polymorphic_path([@course, @theme, @lesson]), local: true) do |form|
+    - if @lesson.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(@lesson.errors.count, "error")
+          prohibited this lesson from being saved:
+        %ul
+          - @lesson.errors.full_messages.each do |message|
+            %li= message
+    .field.form-group
+      = form.label :topic
+      = form.text_field :topic, class: 'form-control'
+    .field.form-group
+      = form.label :description
+      = form.text_field :description, class: 'form-control'
+    .field.form-group
+      = form.label :links
+      = form.text_field :links, class: 'form-control'
+    .field.form-group.lesson-date-group
+      = form.label :date
+      %div
+        = form.date_select :date,             |
+          {                                   |
+              start_year: Date.today.year,    |
+              end_year: Date.today.year.next, |
+              order: [:day, :month, :year]    |
+          },                                  |
+          {class: 'form-control'}
+    - if @lesson.id
+      %table.table.table-hover.table-bordered.journal-table
+        %thead.journal-thead
+          %tr
+            %th
+              = t('activerecord.attributes.achievement.user')
+            %th
+              = t('activerecord.attributes.achievement.point')
+            %th
+              = t('activerecord.attributes.achievement.attendance')
+        %tbody
+          - @course.group.users.each do |student|
+            %tr.student-row
+              %td.student-name.fixed
+                = "#{student.surname}"
+                = "#{student.name}"
+              - ach = @course.achievements_hash[@lesson.id][student.id]
+              %td{class: "points center #{ach[:type] if ach}"}
+                - if ach
+                  = ach[:points]
+                - else
+                  = link_to '+', new_achievement_path(achievement: { student: student, lesson: @lesson })
+              %td.attendance.center
+                = 'н' if ach && !ach[:attendance]
+    .actions.form-actions
+      %div
+        %button.btn.btn-success.form-btn{type: "submit"}= t('submit')
+      %div
+        = link_to t('back'), course_path(id: @course), class: 'btn btn-danger form-btn'

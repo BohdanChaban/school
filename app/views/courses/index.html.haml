@@ -1,0 +1,11 @@
+- @title = t('activerecord.models.course.other')
+%h1= @title
+%section.course-section
+  - @courses.in_groups_of(4).each do |group|
+    .row
+      - group.each do |course|
+        - if course
+          %a{href: "<haml_loud"}
+            course_path course  &gt;
+            .course-item.col-md-3
+              = render "#{current_user.role}", :course => course

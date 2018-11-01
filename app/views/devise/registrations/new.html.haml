@@ -1,0 +1,40 @@
+= bootstrap_devise_error_messages!
+.panel.panel-default.devise-bs
+  .panel-heading
+    %h4= t('.sign_up', default: 'Sign up')
+  .panel-body
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { role: 'form' }) do |f|
+      .form-group
+        = f.label :name
+        = f.text_field :name, autofocus: true, class: 'form-control'
+      .form-group
+        = f.label :surname
+        = f.text_field :surname, autofocus: true, class: 'form-control'
+      .form-group
+        = f.label :email
+        = f.email_field :email, autofocus: true, class: 'form-control'
+      .form-group
+        = f.label :password
+        = f.password_field :password, class: 'form-control'
+      .form-group
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, class: 'form-control'
+      #role_select.form-group
+        = f.label :role
+        = f.select(:role) do
+          = User.roles.each do |key, val|
+            = content_tag(:option, key, value: key)
+      #group_select.form-group
+        = f.label :group
+        = f.select(:group_id) do
+          = content_tag(:option, "Select group", value: nil)
+          = Group.all.each do |group|
+            = content_tag(:option, "#{group.number}-#{group.parallel}", value: group.id)
+      = f.submit t('.sign_up', default: 'Sign up'), class: 'btn btn-primary'
+:javascript
+  $('#group_select').show()
+  $('#user_role').on('change', function() {
+    if($(this).val() === 'student') return $('#group_select').show()
+    $('#group_select').hide()
+  })
+= render 'devise/shared/links'

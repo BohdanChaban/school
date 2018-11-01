@@ -1,0 +1,3 @@
+%h1
+  = t('activerecord.models.achievement.edit')
+= render 'form', achievement: @achievement, lesson: params[:achievement][:lesson], student: params[:achievement][:student]
