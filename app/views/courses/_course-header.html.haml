@@ -1,0 +1,11 @@
+%table.course-header
+  %tbody
+    %tr
+      %td.col-md-3
+        %a{href: "<haml_loud"}
+          group_path @course.group.id  &gt;
+          \#{"#{@course.group.number}-#{@course.group.parallel}"}
+      %td.col-md-4
+        = t("subjects.#{@course.subject.name}")
+      %td.col-md-5
+        = "#{@course.user.surname} #{@course.user.name}"

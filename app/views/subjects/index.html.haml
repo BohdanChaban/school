@@ -1,0 +1,12 @@
+- @title = t('activerecord.models.subject.other')
+%h1= @title
+%table.subject-table
+  %tbody
+    - @subjects.in_groups_of(4).each do |group|
+      %tr.row
+        - group.each do |subject|
+          %td.subject-item.col-md-3
+            - if subject
+              = image_tag subject.image, alt: subject.name
+              .subject-name
+                = t("subjects.#{subject.name}")

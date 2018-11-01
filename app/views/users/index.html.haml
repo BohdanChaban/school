@@ -1,0 +1,21 @@
+- @title = t('activerecord.models.teacher.other')
+%h3
+  = @title
+%table.table.table-hover
+  %thead
+    %tr
+      %th
+        = t('activerecord.attributes.user.surname')
+      %th
+        = t('activerecord.attributes.user.name')
+      %th
+        = t('activerecord.models.subject.other')
+  %tbody
+    - @teachers.each do |teacher|
+      %tr
+        %td= teacher.surname
+        %td= teacher.name
+        %td
+          %ul
+            - teacher.subjects.uniq.each do |subject|
+              %li= t("subjects.#{subject.name}")

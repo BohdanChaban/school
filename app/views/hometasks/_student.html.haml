@@ -1,0 +1,19 @@
+%table.table.table-bordered
+  %thead
+    %tr
+      %th{scope: "col topic"}
+        = t('activerecord.models.course.one')
+      %th{scope: "col topic"}
+        = t('activerecord.attributes.hometask.description')
+      %th{scope: "col topic"}
+        = t('activerecord.attributes.hometask.link')
+      %th{scope: "col topic"}
+        = t('activerecord.attributes.hometask.lesson')
+  %tbody
+    - @hometasks.each do |hometask|
+      - if hometask
+        %tr
+          %td{scope: "row"}= t("subjects.#{hometask.subject_name}")
+          %td= hometask.description
+          %td= hometask.link
+          %td= hometask.lesson.topic

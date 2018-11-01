@@ -1,0 +1,25 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title= @title || t(:title)
+    = csrf_meta_tags
+    / Bootstrap 3
+    %link{href: "//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.css", rel: "stylesheet"}/
+    %link{href: "//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.css", rel: "stylesheet"}/
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    = render 'layouts/header'
+    %main.main.container
+      - if flash.present?
+        - flash.each do |key, value|
+          %div{class: "#{flash_class(key)} alert-dismissible", role: "alert"}
+            %button.close{"aria-label" => "Close", "data-dismiss" => "alert", type: "button"}
+              %span{"aria-hidden" => "true"} ×
+            = value
+      = yield
+    %footer.footer
+      %span
+        = t('all_rights_reserved')
+        © 2018

@@ -1,0 +1,11 @@
+%h1.article-title
+  = t('news')
+%div
+  - @articles.each do |article|
+    .article-item
+      .article-topic
+        = article.topic
+      .article-summary
+        = article.summary
+      .article-link
+        = link_to  t('details'), article, class: 'btn btn-info right'

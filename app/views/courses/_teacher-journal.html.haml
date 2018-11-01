@@ -1,0 +1,39 @@
+#table-scroll.table-scroll
+  .table-wrap
+    %table.table.table-hover.table-bordered.journal-table
+      / <table class="table table-hover table-bordered journal-table">
+      %thead.journal-thead
+        %tr
+          %th.topic.fixed
+            = t('activerecord.models.theme.other')
+          - @course.themes.order(:id).each do |theme|
+            %th{colspan: "#{theme.lessons.count * 2 + 1}"}
+              = link_to theme.id, edit_course_theme_path(id: theme, course_id: @course)
+          %th.plus-item
+            = link_to image_tag('plus.png'), new_course_theme_path(course_id: @course), class: 'plus-link'
+        %tr
+          %th.topic.fixed
+            = t('activerecord.models.lesson.other')
+          - @course.themes.each do |theme|
+            - theme.lessons.each do |lesson|
+              %th{colspan: "2"}
+                - lesson_link = lesson.date ? lesson.date.strftime("%e.%m") : '--.--'
+                = link_to lesson_link, edit_course_theme_lesson_path(id: lesson, theme_id: theme.id, course_id: @course)
+            %th.plus-item
+              = link_to image_tag('plus.png'), new_course_theme_lesson_path(theme_id: theme.id, course_id: @course.id), class: 'plus-link'
+          %th
+      %tbody
+        - @course.group.users.each do |student|
+          %tr.student-row
+            %td.student-name.fixed
+              = "#{student.surname}"
+              = "#{student.name}"
+            - @course.themes.each do |theme|
+              - theme.lessons.each do |lesson|
+                - ach = @course.achievements_hash[lesson.id][student.id]
+                %td{class: "points center #{ach[:type] if ach}"}
+                  = ach[:points] if ach
+                %td.attendance.center
+                  = 'н' if ach && !ach[:attendance]
+              %td.center
+            %td

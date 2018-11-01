@@ -1,0 +1,23 @@
+.group-container
+  .group-number.col-md-3
+    = image_tag "groups/#{@group.number}.png", class: 'group-img'
+    = image_tag "groups/#{@group.parallel}.png", class: 'group-img'
+  .col-md-9
+    %table.table.table-hover
+      %thead
+        %tr
+          %th.group-user-number #
+          %th
+            = t('activerecord.attributes.user.surname')
+          %th
+            = t('activerecord.attributes.user.name')
+          %th
+            = t('activerecord.attributes.user.email')
+      %tbody.group-body
+        - @group.users.each_with_index do |user, i|
+          %tr
+            %td.group-user-number= i+1
+            %td= user.surname
+            %td= user.name
+            %td= user.email
+= link_to t('devise.shared.links.back'), groups_path, class: 'btn btn-info right back-btn' if current_user.teacher?

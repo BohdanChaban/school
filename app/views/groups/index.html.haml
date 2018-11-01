@@ -1,0 +1,17 @@
+- @title = t('activerecord.models.group.other')
+%h1
+  = @title
+%table
+  %thead
+    %tr
+      %th
+        = t('activerecord.attributes.group.number')
+      %th
+        = t('activerecord.attributes.group.parallel')
+      %th{colspan: "3"}
+  %tbody
+    - @groups.each do |group|
+      %tr
+        %td= group.number
+        %td= group.parallel
+        %td= link_to  t('show'), group
