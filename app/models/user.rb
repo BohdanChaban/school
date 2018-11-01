@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  NAME_LENGTH_RANGE  = 2..30
+  EMAIL_LENGTH_RANGE = 6..40
+  ROLES              = %w[student curator teacher mentor].freeze
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -13,10 +15,6 @@ class User < ApplicationRecord
   has_many :subjects, through: :courses
 
   has_many :achievements, dependent: :destroy
-
-  NAME_LENGTH_RANGE = 2..30
-  EMAIL_LENGTH_RANGE = 6..40
-  ROLES = %w[student curator teacher mentor].freeze
 
   # validates :group_id, presence: true, if: -> { self.student? }
 
@@ -64,10 +62,4 @@ class User < ApplicationRecord
     end
     hometasks
   end
-  # def collect_all(hometasks, enumerator)
-  #   enumerator.each do |course|
-  #     hometasks << Hometask.for_course(course)
-  #   end
-  #   hometasks
-  # end
 end

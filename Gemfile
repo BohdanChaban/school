@@ -80,6 +80,7 @@ group :development do
   # ----- OLD
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rubocop'
+  gem 'rubocop-rspec'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
@@ -101,10 +102,10 @@ group :test do
 
   # ----- OLD
   gem 'capybara', '~> 2.13'
-  gem 'coveralls', require: false
+  gem 'coveralls',                    require: false
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
-  gem 'simplecov', require: false, group: :test
-  gem 'simplecov-console', require: false
+  gem 'simplecov',                    require: false
+  gem 'simplecov-console',            require: false
 end

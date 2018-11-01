@@ -16,13 +16,14 @@ class Course < ApplicationRecord
   def achievements_hash
     hash = {}
     themes.each do |theme|
-      theme.lessons.each do |lesson|
-        hash[lesson.id] = {}
-        lesson.achievements.each do |ach|
-          hash[lesson.id][ach.user.id] = { points: ach.points, type: ach.kind, attendance: ach.attendance }
-        end
+      theme.lessons.each do |el|
+        (hash[el.id] = {}) && (el.achievements.each { |av| hash[el.id][av.user.id] = acv(av) })
       end
     end
     hash
+  end
+
+  def acv(ach)
+    { points: ach.points, type: ach.kind, attendance: ach.attendance }
   end
 end
