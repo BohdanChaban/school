@@ -30,6 +30,7 @@ gem 'rails_admin-i18n'
 
 # ----- NEW
 # gem 'hamlit'
+# gem 'hamlit-rails'
 # gem 'simple_form'
 
 # ----- OLD
@@ -55,8 +56,6 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   # ----- NEW
-  # gem 'binding_of_caller'
-  # gem 'capybara'
   # gem 'guard-rspec'
   # gem 'parallel_tests'
   # gem 'pry-rails'
@@ -71,19 +70,17 @@ end
 # === DEV ================================================= #
 
 group :development do
-  # ----- NEW
-  # gem 'annotate'
-  # gem 'awesome_print'
-  # gem 'better_errors'
-  # gem 'brakeman', require: false
-
-  # ----- OLD
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'annotate'
+  gem 'awesome_print'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'brakeman',              require: false
+  gem 'listen',                '>= 3.0.5', '< 3.2'
   gem 'rubocop'
   gem 'rubocop-rspec'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'web-console', '>= 3.3.0'
+  gem 'web-console',           '>= 3.3.0'
 end
 
 # === TEST ================================================ #
@@ -101,11 +98,10 @@ group :test do
   # gem 'timecop'
 
   # ----- OLD
-  gem 'capybara', '~> 2.13'
+  gem 'capybara',                     '~> 2.13'
   gem 'coveralls',                    require: false
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
   gem 'simplecov',                    require: false
-  gem 'simplecov-console',            require: false
 end
