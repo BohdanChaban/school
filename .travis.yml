@@ -1,6 +1,12 @@
+sudo: required
+addons:
+  chrome: stable
+
 language: ruby
 rvm:
   - 2.4.1
+env:
+  - DATABASE_USERNAME=travis
 before_install:
   - gem install bundler
 before_script:
@@ -10,3 +16,4 @@ notifications:
 script:
   - bundle exec rspec
   - bundle exec rubocop
+
