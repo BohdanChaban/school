@@ -1,5 +1,17 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: subjects
+#
+#  id         :bigint(8)        not null, primary key
+#  name       :string           default(""), not null
+#  image      :string           default(""), not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+
 require 'rails_helper'
 
 RSpec.describe Subject, type: :model do

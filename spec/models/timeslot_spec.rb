@@ -1,5 +1,19 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: timeslots
+#
+#  id         :bigint(8)        not null, primary key
+#  day        :integer          default("monday"), not null
+#  number     :integer          default("2"), not null
+#  course_id  :bigint(8)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  group_id   :bigint(8)
+#
+
+
 require 'rails_helper'
 
 RSpec.describe Timeslot, type: :model do

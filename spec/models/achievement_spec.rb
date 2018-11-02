@@ -1,5 +1,20 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: achievements
+#
+#  id         :bigint(8)        not null, primary key
+#  points     :integer          not null
+#  attendance :boolean          default(TRUE), not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  user_id    :bigint(8)
+#  lesson_id  :bigint(8)
+#  kind       :integer          default("normal"), not null
+#
+
+
 require 'rails_helper'
 
 RSpec.describe Achievement, type: :model do
