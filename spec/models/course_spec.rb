@@ -1,5 +1,19 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: courses
+#
+#  id         :bigint(8)        not null, primary key
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  displayed  :boolean          default(TRUE), not null
+#  group_id   :bigint(8)        not null
+#  subject_id :bigint(8)        not null
+#  user_id    :bigint(8)        not null
+#
+
+
 require 'rails_helper'
 
 RSpec.describe Course, type: :model do

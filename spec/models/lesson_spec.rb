@@ -1,5 +1,20 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: lessons
+#
+#  id          :bigint(8)        not null, primary key
+#  topic       :string           default(""), not null
+#  description :text             default(""), not null
+#  links       :text             default(""), not null
+#  date        :date
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  theme_id    :bigint(8)
+#
+
+
 require 'rails_helper'
 
 RSpec.describe Lesson, type: :model do

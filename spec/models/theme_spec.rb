@@ -1,5 +1,19 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: themes
+#
+#  id          :bigint(8)        not null, primary key
+#  topic       :string           default(""), not null
+#  description :text             default(""), not null
+#  links       :text             default(""), not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  course_id   :bigint(8)
+#
+
+
 require 'rails_helper'
 
 RSpec.describe Theme, type: :model do
